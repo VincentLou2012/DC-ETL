@@ -1,0 +1,16 @@
+F:\project\DataCenter\DC.ETL.Service.Business\bin\Debug\DC.ETL.Service.Business.dll
+F:\project\DataCenter\DC.ETL.Service.Business\bin\Debug\DC.ETL.Service.Business.pdb
+F:\project\DataCenter\DC.ETL.Service.Business\obj\Debug\DC.ETL.Service.Business.csproj.CoreCompileInputs.cache
+F:\project\DataCenter\DC.ETL.Service.Business\obj\Debug\DC.ETL.Service.Business.dll
+F:\project\DataCenter\DC.ETL.Service.Business\obj\Debug\DC.ETL.Service.Business.pdb
+F:\project\DataCenter-v0.0.1\DC.ETL.Service.Business\bin\Debug\DC.ETL.Service.Business.dll
+F:\project\DataCenter-v0.0.1\DC.ETL.Service.Business\bin\Debug\DC.ETL.Service.Business.pdb
+F:\project\DataCenter-v0.0.1\DC.ETL.Service.Business\obj\Debug\DC.ETL.Service.Business.csproj.CoreCompileInputs.cache
+F:\project\DataCenter-v0.0.1\DC.ETL.Service.Business\obj\Debug\DC.ETL.Service.Business.dll
+F:\project\DataCenter-v0.0.1\DC.ETL.Service.Business\obj\Debug\DC.ETL.Service.Business.pdb
+G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Service.Business\bin\Debug\DC.ETL.Service.Business.dll
+G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Service.Business\bin\Debug\DC.ETL.Service.Business.pdb
+G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Service.Business\obj\Debug\DC.ETL.Service.Business.csprojResolveAssemblyReference.cache
+G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Service.Business\obj\Debug\DC.ETL.Service.Business.csproj.CoreCompileInputs.cache
+G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Service.Business\obj\Debug\DC.ETL.Service.Business.dll
+G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Service.Business\obj\Debug\DC.ETL.Service.Business.pdb

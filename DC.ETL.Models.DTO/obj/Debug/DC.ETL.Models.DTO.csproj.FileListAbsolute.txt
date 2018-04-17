@@ -1,0 +1,16 @@
+F:\project\DataCenter\DC.ETL.Models.DTO\bin\Debug\DC.ETL.Models.DTO.dll
+F:\project\DataCenter\DC.ETL.Models.DTO\bin\Debug\DC.ETL.Models.DTO.pdb
+F:\project\DataCenter\DC.ETL.Models.DTO\obj\Debug\DC.ETL.Models.DTO.csproj.CoreCompileInputs.cache
+F:\project\DataCenter\DC.ETL.Models.DTO\obj\Debug\DC.ETL.Models.DTO.dll
+F:\project\DataCenter\DC.ETL.Models.DTO\obj\Debug\DC.ETL.Models.DTO.pdb
+F:\project\DataCenter-v0.0.1\DC.ETL.Models.DTO\bin\Debug\DC.ETL.Models.DTO.dll
+F:\project\DataCenter-v0.0.1\DC.ETL.Models.DTO\bin\Debug\DC.ETL.Models.DTO.pdb
+F:\project\DataCenter-v0.0.1\DC.ETL.Models.DTO\obj\Debug\DC.ETL.Models.DTO.csproj.CoreCompileInputs.cache
+F:\project\DataCenter-v0.0.1\DC.ETL.Models.DTO\obj\Debug\DC.ETL.Models.DTO.dll
+F:\project\DataCenter-v0.0.1\DC.ETL.Models.DTO\obj\Debug\DC.ETL.Models.DTO.pdb
+G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Models.DTO\bin\Debug\DC.ETL.Models.DTO.dll
+G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Models.DTO\bin\Debug\DC.ETL.Models.DTO.pdb
+G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Models.DTO\obj\Debug\DC.ETL.Models.DTO.csprojResolveAssemblyReference.cache
+G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Models.DTO\obj\Debug\DC.ETL.Models.DTO.csproj.CoreCompileInputs.cache
+G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Models.DTO\obj\Debug\DC.ETL.Models.DTO.dll
+G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Models.DTO\obj\Debug\DC.ETL.Models.DTO.pdb
