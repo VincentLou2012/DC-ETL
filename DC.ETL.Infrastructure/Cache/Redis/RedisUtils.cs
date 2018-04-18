@@ -1100,7 +1100,8 @@ namespace DC.ETL.Infrastructure.Cache.Redis
         /// <returns></returns>
         private static string AddKeyPrefix(string key)
         {
-            return string.Format("{DefaultKey}:{key}",DefaultKey,key);
+            // return "{DefaultKey}:{key}"; // 原始代码
+            return string.Format("{0}:{1}",DefaultKey,key);
         }
 
         #region 注册事件

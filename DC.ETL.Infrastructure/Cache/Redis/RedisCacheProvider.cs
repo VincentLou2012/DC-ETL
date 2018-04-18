@@ -24,27 +24,27 @@ namespace DC.ETL.Infrastructure.Cache.Redis
 
         public void Update(string key, string valueKey, object value)
         {
-            throw new NotImplementedException();
+            bool b = _ru.HashSet<object>(key, valueKey, value);
         }
 
         public object Get(string key, string valueKey)
         {
-            throw new NotImplementedException();
+            return _ru.HashGet<object>(key, valueKey);
         }
 
         public void Remove(string key)
         {
-            throw new NotImplementedException();
+            bool b = _ru.KeyDelete(key);
         }
 
         public bool Exists(string key)
         {
-            throw new NotImplementedException();
+            return _ru.KeyExists(key);
         }
 
         public bool Exists(string key, string valueKey)
         {
-            throw new NotImplementedException();
+            return _ru.HashExists(key, valueKey);
         }
     }
 }

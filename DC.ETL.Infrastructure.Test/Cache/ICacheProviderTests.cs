@@ -45,7 +45,12 @@ namespace DC.ETL.Infrastructure.Cache.Redis.Tests
             {
                 icp.Add(obj.ToString(), obj.ToString(), obj);
             }
-            Assert.Fail();
+
+            foreach (var obj in objArr)
+            {
+                object o = icp.Get(obj.ToString(), obj.ToString());
+                Assert.AreEqual(obj, o);
+            }
         }
 
         [TestMethod()]

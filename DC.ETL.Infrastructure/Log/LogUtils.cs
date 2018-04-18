@@ -107,8 +107,7 @@ namespace DC.ETL.Infrastructure.Log
 
         public static void DebugException(string message, Exception exception, params object[] formatParams)
         {
-
-                Logger.DebugException(message, exception, formatParams);
+            Logger.DebugException(message, exception, formatParams);
         }
 
         public static void Error(Func<string> messageFunc)
