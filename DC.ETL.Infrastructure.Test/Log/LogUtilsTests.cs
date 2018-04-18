@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DC.ETL.Infrastructure.Log;
-using DC.ETL.Infrastructure.Models;
+using DC.ETL.Infrastructure.Log.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DC.ETL.Infrastructure.Test.Utils;
 using System.IO;
@@ -16,7 +16,7 @@ namespace DC.ETL.Infrastructure.Log.Tests
         #region Modules
         private string GetLog4NetConfigValue(string XPath)
         {
-            string xmlPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"log4net.config");
+            string xmlPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Log\Log4net\log4net.config");
             XmlHelper xh = new XmlHelper(xmlPath);
             return xh.GetAttributeValue(XPath, "value");
         }

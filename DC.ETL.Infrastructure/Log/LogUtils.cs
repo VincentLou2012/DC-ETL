@@ -41,14 +41,14 @@ namespace DC.ETL.Infrastructure.Log
         /// </summary>
         public static void InitLog4Net()
         {
-            log4net.Config.XmlConfigurator.Configure(new FileInfo(AppDomain.CurrentDomain.BaseDirectory + @"\log4net.config"));
+            log4net.Config.XmlConfigurator.Configure(new FileInfo(AppDomain.CurrentDomain.BaseDirectory + @"\Log\Log4net\log4net.config"));
         }
         /// <summary>
         /// 初始化 log4net 写入数据库
         /// </summary>
         public static void InitLog4NetDB()
         {
-            log4net.Config.XmlConfigurator.Configure(new FileInfo(AppDomain.CurrentDomain.BaseDirectory + @"\log4net_db.config"));
+            log4net.Config.XmlConfigurator.Configure(new FileInfo(AppDomain.CurrentDomain.BaseDirectory + @"\Log\Log4net\log4net_db.config"));
         }
         #endregion Init
 

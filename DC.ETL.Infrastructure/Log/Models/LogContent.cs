@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DC.ETL.Infrastructure.Models
+namespace DC.ETL.Infrastructure.Log.Models
 {
     /// <summary>  
     /// 包含了所有的自定字段属性  

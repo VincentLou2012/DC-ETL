@@ -4,16 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Web; 
+using System.Web;
 
-namespace DC.ETL.Infrastructure.Log
+namespace DC.ETL.Infrastructure.Log4net.Log
 {
     /// <summary>
     /// log4net配置应用 输出实体使用 目前配置了输出到数据库方式
     /// </summary>
-    public class MyLayout : PatternLayout
+    public class PropLayout : PatternLayout
     {
-        public MyLayout()
+        public PropLayout()
         {
             this.AddConverter("property", typeof(LogInfoPatternConverter));
         }
