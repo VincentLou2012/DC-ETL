@@ -2,7 +2,6 @@
 Thumbs.db
 #Ignore files build by VC
 *.obj
-*.exe
 *.pdb
 *.user
 *.aps
