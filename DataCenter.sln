@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.ETL.Infrastructure", "DC.ETL.Infrastructure\DC.ETL.Infrastructure.csproj", "{B5859FF2-B448-4BFB-A52E-5C2DDF9798C5}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.ETL.Manager", "DC.ETL.Manager\DC.ETL.Manager.csproj", "{B95C1BFF-68F6-4BFB-842B-6D2FB7C9AA20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.ETL.ExtractEngine", "DC.ETL.ExtractEngine\DC.ETL.ExtractEngine.csproj", "{2C56A960-384C-4ADF-A457-6895DCF4F915}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.ETL.Infrastructure.Test", "DC.ETL.Infrastructure.Test\DC.ETL.Infrastructure.Test.csproj", "{62E58E46-146B-4655-8DAA-09A2DAC70B8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,14 +65,18 @@ Global
 		{2C56A960-384C-4ADF-A457-6895DCF4F915}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C56A960-384C-4ADF-A457-6895DCF4F915}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C56A960-384C-4ADF-A457-6895DCF4F915}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62E58E46-146B-4655-8DAA-09A2DAC70B8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62E58E46-146B-4655-8DAA-09A2DAC70B8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62E58E46-146B-4655-8DAA-09A2DAC70B8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62E58E46-146B-4655-8DAA-09A2DAC70B8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{1B4F7645-5E54-44A5-ACC0-2CA3E40AEA27} = {B4F76208-1E9B-408C-9664-435B6D046D9A}
 		{911E1011-D227-4F49-9CD9-723C6599B242} = {EB6C9ADC-16D2-439F-A6FA-0A057832CAB8}
 		{EEEDD087-DB2A-4891-9C33-63A3967B92EF} = {EB6C9ADC-16D2-439F-A6FA-0A057832CAB8}
-		{1B4F7645-5E54-44A5-ACC0-2CA3E40AEA27} = {B4F76208-1E9B-408C-9664-435B6D046D9A}
 		{B95C1BFF-68F6-4BFB-842B-6D2FB7C9AA20} = {BF85825F-D9AA-4463-A426-1BBD4891D109}
 		{2C56A960-384C-4ADF-A457-6895DCF4F915} = {BF85825F-D9AA-4463-A426-1BBD4891D109}
 	EndGlobalSection
