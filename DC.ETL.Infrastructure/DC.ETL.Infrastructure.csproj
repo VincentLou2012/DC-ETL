@@ -70,6 +70,7 @@
     <Compile Include="Container\IContainer.cs" />
     <Compile Include="Container\UnityResolver.cs" />
     <Compile Include="DisposableResource.cs" />
+    <Compile Include="PagedResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

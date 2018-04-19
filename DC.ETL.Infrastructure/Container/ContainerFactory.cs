@@ -52,8 +52,8 @@ namespace DC.ETL.Infrastructure.Container
             }
             catch (Exception ex)
             {
+                throw ex;
                 //TODO：错误日志
-                return null;
             }
         }
 

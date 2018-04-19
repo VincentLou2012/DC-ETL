@@ -62,8 +62,20 @@
     <Compile Include="IRepository\IRepository.cs" />
     <Compile Include="IRepository\IUnitOfWork.cs" />
     <Compile Include="IRepository\IUnitOfWorkRepositoryContext.cs" />
+    <Compile Include="IRepository\SortOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Specifications\AnySpecification.cs" />
+    <Compile Include="Specifications\ExpressionSpecification.cs" />
+    <Compile Include="Specifications\ISpecification.cs" />
+    <Compile Include="Specifications\ParameterReplacer.cs" />
+    <Compile Include="Specifications\SpecExprExtensions.cs" />
+    <Compile Include="Specifications\Specification.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DC.ETL.Infrastructure\DC.ETL.Infrastructure.csproj">
+      <Project>{b5859ff2-b448-4bfb-a52e-5c2ddf9798c5}</Project>
+      <Name>DC.ETL.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

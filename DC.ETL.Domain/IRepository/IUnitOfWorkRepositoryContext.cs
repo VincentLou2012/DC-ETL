@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DC.ETL.Domain.IRepository
+namespace DC.ETL.Domain
 {
-    public interface IUnitOfWorkRepositoryContext : IUnitOfWork , IDisposable
+    public interface IUnitOfWorkRepositoryContext : IUnitOfWork, IDisposable
     {
         /// <summary>
         /// 将聚合根的状态标记为新建，但EF上下文此时并未提交
@@ -14,7 +14,7 @@ namespace DC.ETL.Domain.IRepository
         /// <typeparam name="TAggregateRoot"></typeparam>
         /// <param name="obj"></param>
         void RegisterNew<TAggregateRoot>(TAggregateRoot obj)
-            where TAggregateRoot : IAggregateRoot;
+            where TAggregateRoot : class, IAggregateRoot;
 
         /// <summary>
         /// 将聚合根的状态标记为修改，但EF上下文此时并未提交
@@ -22,7 +22,7 @@ namespace DC.ETL.Domain.IRepository
         /// <typeparam name="TAggregateRoot"></typeparam>
         /// <param name="obj"></param>
         void RegisterModified<TAggregateRoot>(TAggregateRoot obj)
-            where TAggregateRoot : IAggregateRoot;
+            where TAggregateRoot : class, IAggregateRoot;
 
         /// <summary>
         /// 将聚合根的状态标记为删除，但EF上下文此时并未提交
@@ -30,6 +30,6 @@ namespace DC.ETL.Domain.IRepository
         /// <typeparam name="TAggregateRoot"></typeparam>
         /// <param name="obj"></param>
         void RegisterDeleted<TAggregateRoot>(TAggregateRoot obj)
-            where TAggregateRoot : IAggregateRoot;
+            where TAggregateRoot : class, IAggregateRoot;
     }
 }

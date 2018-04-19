@@ -17,3 +17,10 @@ G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Service.Provider\obj\Debug\DC.ETL.
 G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Service.Provider\obj\Debug\DC.ETL.Service.Provider.csproj.CoreCompileInputs.cache
 G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Service.Provider\obj\Debug\DC.ETL.Service.Provider.dll
 G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Service.Provider\obj\Debug\DC.ETL.Service.Provider.pdb
+G:\workplace\Project\DataCenter\DC.ETL.Service.Provider\bin\DC.ETL.Service.Provider.dll.config
+G:\workplace\Project\DataCenter\DC.ETL.Service.Provider\bin\DC.ETL.Service.Provider.dll
+G:\workplace\Project\DataCenter\DC.ETL.Service.Provider\bin\DC.ETL.Service.Provider.pdb
+G:\workplace\Project\DataCenter\DC.ETL.Service.Provider\obj\Debug\DC.ETL.Service.Provider.csprojResolveAssemblyReference.cache
+G:\workplace\Project\DataCenter\DC.ETL.Service.Provider\obj\Debug\DC.ETL.Service.Provider.csproj.CoreCompileInputs.cache
+G:\workplace\Project\DataCenter\DC.ETL.Service.Provider\obj\Debug\DC.ETL.Service.Provider.dll
+G:\workplace\Project\DataCenter\DC.ETL.Service.Provider\obj\Debug\DC.ETL.Service.Provider.pdb

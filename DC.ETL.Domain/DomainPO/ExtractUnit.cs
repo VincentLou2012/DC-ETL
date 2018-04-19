@@ -33,8 +33,6 @@ namespace DC.ETL.Domain.Model
         public string Condition { get; set; }
         //参数字符
         public string Params { get; set; }
-        //是否激活
-        public int IsEnabled { get; set; }
         //所属模式
         public virtual Schema Schema { get; set; }
         //所属任务

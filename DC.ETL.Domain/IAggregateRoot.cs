@@ -11,5 +11,6 @@ namespace DC.ETL.Domain
     /// </summary>
     public interface IAggregateRoot : IEntity
     {
+        int IsEnabled { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DC.ETL.Domain.IRepository
+namespace DC.ETL.Domain
 {
     /// <summary>
     /// 工作单元基类接口

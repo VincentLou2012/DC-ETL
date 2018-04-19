@@ -15,3 +15,9 @@ G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Domain\obj\Debug\DC.ETL.Domain.csp
 G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Domain\obj\Debug\DC.ETL.Domain.csproj.CoreCompileInputs.cache
 G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Domain\obj\Debug\DC.ETL.Domain.dll
 G:\workplace\Project\DataCenter-v0.0.1\DC.ETL.Domain\obj\Debug\DC.ETL.Domain.pdb
+G:\workplace\Project\DataCenter\DC.ETL.Domain\bin\Debug\DC.ETL.Domain.dll
+G:\workplace\Project\DataCenter\DC.ETL.Domain\bin\Debug\DC.ETL.Domain.pdb
+G:\workplace\Project\DataCenter\DC.ETL.Domain\obj\Debug\DC.ETL.Domain.csprojResolveAssemblyReference.cache
+G:\workplace\Project\DataCenter\DC.ETL.Domain\obj\Debug\DC.ETL.Domain.csproj.CoreCompileInputs.cache
+G:\workplace\Project\DataCenter\DC.ETL.Domain\obj\Debug\DC.ETL.Domain.dll
+G:\workplace\Project\DataCenter\DC.ETL.Domain\obj\Debug\DC.ETL.Domain.pdb
