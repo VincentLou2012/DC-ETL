@@ -16,7 +16,14 @@ namespace DC.ETL.Infrastructure.Cache.Redis
     public class RedisCacheProvider : ICacheProvider
     {
         private RedisUtils _ru = new RedisUtils();
-
+        /// <summary>
+        /// 显式释放资源 避免程序退出出现线程中止问题
+        /// 2018-04-19 10:40:01
+        /// </summary>
+        public void Close()
+        {
+            _ru.Dispose();
+        }
         public void Add(string key, string valueKey, object value)
         {
             bool b = _ru.HashSet<object>(key, valueKey, value);

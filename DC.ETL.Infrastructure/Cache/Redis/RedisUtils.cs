@@ -17,7 +17,7 @@ namespace DC.ETL.Infrastructure.Cache.Redis
     /// 应用配置ConfigurationManager AppSetting="Redis.DefaultKey"设置默认key前缀
     /// 2018-04-18 14:26:58
     /// </summary>
-    public class RedisUtils
+    public class RedisUtils : IDisposable
     {
         /// <summary>
         /// 连接字符串
@@ -85,7 +85,10 @@ namespace DC.ETL.Infrastructure.Cache.Redis
         {
             _db = _connMultiplexer.GetDatabase(db);
         }
-
+        ~RedisUtils()
+        {
+            Dispose();
+        }
         #endregion 构造函数
 
         #region String 操作
@@ -1231,5 +1234,10 @@ namespace DC.ETL.Infrastructure.Cache.Redis
         }
 
         #endregion private method
+
+        public void Dispose()
+        {
+            _connMultiplexer.Dispose();
+        }
     }
 }

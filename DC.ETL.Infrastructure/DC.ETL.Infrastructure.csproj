@@ -89,6 +89,7 @@
     <Compile Include="Log\Log4net\MyLayout.cs" />
     <Compile Include="Log\Models\LogContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\StrUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Log\Log4net\log4net.config">

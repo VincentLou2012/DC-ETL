@@ -51,6 +51,8 @@ namespace DC.ETL.Infrastructure.Cache.Redis.Tests
                 object o = icp.Get(obj.ToString(), obj.ToString());
                 Assert.AreEqual(obj, o);
             }
+            ((RedisCacheProvider)icp).Close();
+
         }
 
         [TestMethod()]

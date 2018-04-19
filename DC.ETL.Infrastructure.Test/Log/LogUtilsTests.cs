@@ -66,18 +66,20 @@ namespace DC.ETL.Infrastructure.Log.Tests
         public void InitLog4NetTest()
         {
             LogUtils.InitLog4Net();
-            LogUtils.Info("abc");
+            LogUtils.Info("title1", "abc");
             string s = ReadLastLog();
-            int n = s.IndexOf("| abc");
-            Assert.IsTrue(73<= n, "写入错误");
+            int n = s.IndexOf("abc");
+            Assert.IsTrue(73<= n, "写入错误:"+n);
+            n = s.IndexOf("INFO");
+            Assert.IsTrue(0 <= n, "写入INFO错误:" + n);
         }
 
         [TestMethod()]
         public void InitLog4NetDBTest()
         {
             LogUtils.InitLog4NetDB();
-            LogUtils.Info(new LogContent("127.0.0.1", "111111", "登陆系统", "登陆成功"));
-            throw new NotImplementedException();
+            LogUtils.InfoModel(new LogContent("127.0.0.1", "111111", "登陆系统", "登陆成功"));
+            throw new NotImplementedException("需要手动在数据库检查数据 检查逻辑未做");
         }
 
 
@@ -137,10 +139,65 @@ namespace DC.ETL.Infrastructure.Log.Tests
 
 
 
+
         [TestMethod()]
         public void DebugTest()
         {
-            Assert.Fail();
+            LogUtils.InitLog4Net();
+            LogUtils.Debug("param1", "abc", "abc");
+            string s = ReadLastLog();
+            int n = s.IndexOf("abc");
+            Assert.IsTrue(73 <= n, "写入错误:" + n);
+            n = s.IndexOf("DEBUG");
+            Assert.IsTrue(0 <= n, "写入DEBUG错误:" + n);
+        }
+
+        [TestMethod()]
+        public void ErrorTest()
+        {
+            LogUtils.InitLog4Net();
+            LogUtils.Error("param1", "abc", "abc");
+            string s = ReadLastLog();
+            int n = s.IndexOf("abc");
+            Assert.IsTrue(73 <= n, "写入错误:" + n);
+            n = s.IndexOf("ERROR");
+            Assert.IsTrue(0 <= n, "写入ERROR错误:" + n);
+        }
+
+        [TestMethod()]
+        public void FatalTest()
+        {
+            LogUtils.InitLog4Net();
+            LogUtils.Fatal("param1", "abc", "abc");
+            string s = ReadLastLog();
+            int n = s.IndexOf("abc");
+            Assert.IsTrue(73 <= n, "写入错误:" + n);
+            n = s.IndexOf("FATAL");
+            Assert.IsTrue(0 <= n, "写入FATAL错误:" + n);
+        }
+
+        [TestMethod()]
+        public void TraceTest()
+        {
+            LogUtils.InitLog4Net();
+            LogUtils.Trace("param1", "abc", "abc");
+            string s = ReadLastLog();
+            int n = s.IndexOf("abc");
+            Assert.IsTrue(73 <= n, "写入错误:" + n);
+            n = s.IndexOf("TRACE");
+            Assert.IsTrue(0 <= n, "写入TRACE错误:" + n);
+        }
+
+        [TestMethod()]
+        public void WarnTest()
+        {
+            LogUtils.InitLog4Net();
+            LogUtils.Warn("param1", "abc", "abc");
+            string s = ReadLastLog();
+            int n = s.IndexOf("abc");
+            Assert.IsTrue(73 <= n, "写入错误:" + n);
+            n = s.IndexOf("WARN");
+            Assert.IsTrue(0 <= n, "写入WARN错误:" + n);
         }
 
         [TestMethod()]
@@ -168,12 +225,6 @@ namespace DC.ETL.Infrastructure.Log.Tests
         }
 
         [TestMethod()]
-        public void ErrorTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
         public void ErrorTest1()
         {
             Assert.Fail();
@@ -191,11 +242,6 @@ namespace DC.ETL.Infrastructure.Log.Tests
             Assert.Fail();
         }
 
-        [TestMethod()]
-        public void FatalTest()
-        {
-            Assert.Fail();
-        }
 
         [TestMethod()]
         public void FatalTest1()
@@ -211,12 +257,6 @@ namespace DC.ETL.Infrastructure.Log.Tests
 
         [TestMethod()]
         public void FatalExceptionTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void InfoTest()
         {
             Assert.Fail();
         }
@@ -245,11 +285,6 @@ namespace DC.ETL.Infrastructure.Log.Tests
             Assert.Fail();
         }
 
-        [TestMethod()]
-        public void TraceTest()
-        {
-            Assert.Fail();
-        }
 
         [TestMethod()]
         public void TraceTest1()
@@ -269,11 +304,6 @@ namespace DC.ETL.Infrastructure.Log.Tests
             Assert.Fail();
         }
 
-        [TestMethod()]
-        public void WarnTest()
-        {
-            Assert.Fail();
-        }
 
         [TestMethod()]
         public void WarnTest1()
