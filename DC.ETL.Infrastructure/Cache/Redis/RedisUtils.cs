@@ -42,7 +42,9 @@ namespace DC.ETL.Infrastructure.Cache.Redis
         /// <summary>
         /// 数据库
         /// </summary>
-        private readonly IDatabase _db;
+        private IDatabase _db;
+
+        private bool _IsDisposable = true;
 
         /// <summary>
         /// 获取 Redis 连接对象
@@ -71,25 +73,47 @@ namespace DC.ETL.Infrastructure.Cache.Redis
 
         #endregion 其它
 
-        #region 构造函数
+        #region 构造函数资源释放
 
         static RedisUtils()
         {
             ConnectionString = ConfigurationManager.ConnectionStrings["RedisConnectionString"].ConnectionString;
-            _connMultiplexer = ConnectionMultiplexer.Connect(ConnectionString);
             DefaultKey = ConfigurationManager.AppSettings["Redis.DefaultKey"];
+            _connMultiplexer = ConnectionMultiplexer.Connect(ConnectionString);
             AddRegisterEvent();
         }
 
         public RedisUtils(int db = -1)
         {
+            _connMultiplexer = GetConnectionRedisMultiplexer();
             _db = _connMultiplexer.GetDatabase(db);
         }
         ~RedisUtils()
         {
             Dispose();
         }
-        #endregion 构造函数
+
+
+        public void Dispose()
+        {
+            if (_IsDisposable)
+            {
+                Dispose(true);
+            }
+        }
+        private void Dispose(bool value)
+        {
+            if (_IsDisposable)
+            {
+                _IsDisposable = false;
+                _connMultiplexer.Dispose();
+                if (value)
+                {
+                    GC.SuppressFinalize(this);
+                }
+            }
+        }
+        #endregion 构造函数资源释放
 
         #region String 操作
 
@@ -1234,10 +1258,5 @@ namespace DC.ETL.Infrastructure.Cache.Redis
         }
 
         #endregion private method
-
-        public void Dispose()
-        {
-            _connMultiplexer.Dispose();
-        }
     }
 }

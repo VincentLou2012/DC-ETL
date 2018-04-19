@@ -30,11 +30,55 @@ namespace DC.ETL.Infrastructure.Cache.Redis.Tests
         }
         private object[] GetTestArr()
         {
-            object[] objArr = new object[] { 1,"2" };
+            //object[] objArr = new object[] { 1,"2" };
+            object[] objArr = GetRandomUnrepeatArray(0, 10000, 1000);
             return objArr;
+        }
+        /// <summary>
+        /// 生成随机数组
+        /// </summary>
+        /// <param name="minValue"></param>
+        /// <param name="maxValue"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        private object[] GetRandomUnrepeatArray(int minValue, int maxValue, int count)
+        {
+            Random rnd = new Random();
+            int length = count + 1;
+            byte[] keys = new byte[length];
+            rnd.NextBytes(keys);
+            object[] items = new object[length];
+            for (int i = 0; i < length; i++)
+            {
+                items[i] = i + minValue;
+            }
+            Array.Sort(keys, items);
+            object[] result = new object[count];
+            Array.Copy(items, result, count);
+            return result;
         }
         #endregion Modules
 
+        [TestMethod()]
+        public void DisponseTest()
+        {
+            using (RedisCacheProvider icp = new RedisCacheProvider())
+            {
+                object[] objArr = GetTestArr();
+
+                foreach (var obj in objArr)
+                {
+                    icp.Add(obj.ToString(), obj.ToString(), obj);
+                }
+
+                foreach (var obj in objArr)
+                {
+                    object o = icp.Get(obj.ToString(), obj.ToString());
+                    Assert.AreEqual(obj, o);
+                }
+
+            }
+        }
         [TestMethod()]
         public void AddTest()
         {
@@ -51,7 +95,6 @@ namespace DC.ETL.Infrastructure.Cache.Redis.Tests
                 object o = icp.Get(obj.ToString(), obj.ToString());
                 Assert.AreEqual(obj, o);
             }
-            ((RedisCacheProvider)icp).Close();
 
         }
 
@@ -65,7 +108,13 @@ namespace DC.ETL.Infrastructure.Cache.Redis.Tests
             {
                 icp.Update(obj.ToString(), obj.ToString(), obj);
             }
-            Assert.Fail();
+
+            foreach (var obj in objArr)
+            {
+                object o = icp.Get(obj.ToString(), obj.ToString());
+                Assert.AreEqual(obj, o);
+            }
+            //((RedisCacheProvider)icp).Close();
         }
 
         [TestMethod()]
@@ -76,9 +125,10 @@ namespace DC.ETL.Infrastructure.Cache.Redis.Tests
 
             foreach (var obj in objArr)
             {
-                icp.Get(obj.ToString(), obj.ToString());
+                object o = icp.Get(obj.ToString(), obj.ToString());
+                Assert.AreEqual(obj, o);
             }
-            Assert.Fail();
+            //((RedisCacheProvider)icp).Close();
         }
 
         [TestMethod()]
@@ -89,9 +139,20 @@ namespace DC.ETL.Infrastructure.Cache.Redis.Tests
 
             foreach (var obj in objArr)
             {
+                icp.Add(obj.ToString(), obj.ToString(), obj);
+            }
+
+            foreach (var obj in objArr)
+            {
                 icp.Remove(obj.ToString());
             }
-            Assert.Fail();
+
+            foreach (var obj in objArr)
+            {
+                object o = icp.Get(obj.ToString(), obj.ToString());
+                Assert.AreEqual(null, o);
+            }
+            //((RedisCacheProvider)icp).Close();
         }
 
         [TestMethod()]
@@ -102,9 +163,15 @@ namespace DC.ETL.Infrastructure.Cache.Redis.Tests
 
             foreach (var obj in objArr)
             {
-                icp.Exists(obj.ToString());
+                icp.Add(obj.ToString(), obj.ToString(), obj);
             }
-            Assert.Fail();
+
+            foreach (var obj in objArr)
+            {
+                bool b = icp.Exists(obj.ToString());
+                Assert.AreEqual(true, b);
+            }
+            //((RedisCacheProvider)icp).Close();
         }
 
         [TestMethod()]
@@ -115,9 +182,15 @@ namespace DC.ETL.Infrastructure.Cache.Redis.Tests
 
             foreach (var obj in objArr)
             {
-                icp.Exists(obj.ToString(), obj.ToString());
+                icp.Add(obj.ToString(), obj.ToString(), obj);
             }
-            Assert.Fail();
+
+            foreach (var obj in objArr)
+            {
+                bool b = icp.Exists(obj.ToString(), obj.ToString());
+                Assert.AreEqual(true, b);
+            }
+            //((RedisCacheProvider)icp).Close();
         }
     }
 }
