@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace DC.ETL.Domain.Model
 {
-    public partial class DataSourceRcd : OPRecord
+    /// <summary>
+    /// 全表数据结构记录
+    /// </summary>
+    public partial class WholeStructureRcd
     {
-        public int DSID { get; set; }
-        public virtual DataSource _theDS { get; set; }
+
     }
 }

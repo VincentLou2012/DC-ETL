@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DC.ETL.Domain.Model
 {
-    public class UnitRcd : OPRecord
+    public partial class UnitRcd : OPRecord
     {
         public int UnintID { get; set; }
 

@@ -10,7 +10,7 @@ namespace DC.ETL.Domain.Model
     /// <summary>
     /// 操作记录
     /// </summary>
-    public class OPRecord
+    public partial class OPRecord
     {
         //记录ID
         [Key]

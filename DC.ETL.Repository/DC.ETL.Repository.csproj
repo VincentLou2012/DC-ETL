@@ -66,6 +66,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EFRepository\EFRepository.cs" />
+    <Compile Include="EFRepository\PO\DataSourceEFRepository.cs" />
+    <Compile Include="EFRepository\PO\DataSourceRcdEFRepository.cs" />
+    <Compile Include="EFRepository\PO\ExtractStructureEFRepository.cs" />
+    <Compile Include="EFRepository\PO\ExtractUnitEFRepository.cs" />
+    <Compile Include="EFRepository\PO\OPRecordEFRepository.cs" />
+    <Compile Include="EFRepository\PO\SchemaEFRepository.cs" />
+    <Compile Include="EFRepository\PO\SchemaRcdEFRepository.cs" />
+    <Compile Include="EFRepository\PO\StrategyEFRepository.cs" />
+    <Compile Include="EFRepository\PO\StructureRcdEFRepository.cs" />
+    <Compile Include="EFRepository\PO\TaskEFRepository.cs" />
+    <Compile Include="EFRepository\PO\TaskRcdEFRepository.cs" />
+    <Compile Include="EFRepository\PO\UnitRcdEFRepository.cs" />
+    <Compile Include="EFRepository\PO\WholeStructureEFRepository.cs" />
+    <Compile Include="EFRepository\PO\WholeStructureRcdEFRepository.cs" />
     <Compile Include="EFRepository\SortByExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork\EntityFramework\EFDbContext.cs" />

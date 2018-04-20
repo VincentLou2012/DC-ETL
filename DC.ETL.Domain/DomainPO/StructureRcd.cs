@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DC.ETL.Domain.Model
 {
-    public class StructureRcd : OPRecord
+    public partial class StructureRcd : OPRecord
     {
         public int StructureID { get; set; }
         public virtual ExtractStructure _theStructure { get; set; }

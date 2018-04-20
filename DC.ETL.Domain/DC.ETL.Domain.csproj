@@ -43,6 +43,19 @@
   <ItemGroup>
     <Compile Include="BaseModel\AggregateRoot.cs" />
     <Compile Include="BaseModel\DataSource.cs" />
+    <Compile Include="BaseModel\DataSourceRcd.cs" />
+    <Compile Include="BaseModel\ExtractStructure.cs" />
+    <Compile Include="BaseModel\ExtractUnit.cs" />
+    <Compile Include="BaseModel\OPRecord.cs" />
+    <Compile Include="BaseModel\Schema.cs" />
+    <Compile Include="BaseModel\SchemaRcd.cs" />
+    <Compile Include="BaseModel\Strategy.cs" />
+    <Compile Include="BaseModel\StructureRcd.cs" />
+    <Compile Include="BaseModel\Task.cs" />
+    <Compile Include="BaseModel\TaskRcd.cs" />
+    <Compile Include="BaseModel\UnitRcd.cs" />
+    <Compile Include="BaseModel\WholeStructure.cs" />
+    <Compile Include="BaseModel\WholeStructureRcd.cs" />
     <Compile Include="DomainPO\DataSource.cs" />
     <Compile Include="DomainPO\DataSourceRcd.cs" />
     <Compile Include="DomainPO\ExtractStructure.cs" />
