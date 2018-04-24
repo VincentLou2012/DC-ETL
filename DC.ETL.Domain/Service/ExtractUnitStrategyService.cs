@@ -28,13 +28,28 @@ namespace DC.ETL.Domain.Service
         {
             if (SNextractUnit == null || SNStrategies == null) return -1;// TODO: 替换标准错误代码
             ExtractUnit extractUnit = new ExtractUnit();
-            extractUnit.Get(SNextractUnit);
-            //Expression<Func<Strategy, bool>> ex = t => SNStrategies.Contains(t.SN);
-            //IEnumerable<Strategy> Strategies = iStrategyRepository.GetAll(new ExpressionSpecification<Strategy>(ex));
+            ExtractUnit extractUnit1 = extractUnit.Get(SNextractUnit);
+            Strategy strategy = new Strategy();
+
+            IEnumerable<Strategy> Strategies = strategy.GetAll(SNStrategies);
+            List<ExtractUnit> extractUnits = new List<ExtractUnit>();
+            extractUnits.Add(extractUnit1);
+            foreach (Strategy item in Strategies)
+            {
+                if(item.Units == null)
+                {
+                    item.Units = extractUnits;
+                }
+                else
+                {
+                    if (!item.Units.Contains(extractUnit1))
+                        item.Units.Add(extractUnit1);
+                }
+            }
             //extractUnit.Strategies = Strategies.ToArray();
             //iExtractUnitRepository.Update(extractUnit);
-            //return iExtractUnitRepository.SaveChanges();
-            throw new NotImplementedException();
+            return strategy.Update(Strategies.ToArray());
+            //throw new NotImplementedException();
         }
     }
 }
