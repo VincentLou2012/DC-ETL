@@ -35,7 +35,7 @@ namespace DC.ETL.Domain.Model
         /// <returns>Schema模式集合</returns>
         public IEnumerable<Schema> GetSchema(Guid SN)
         {
-            DataSource ds = Get(SN);
+            DataSource ds = iDataSourceRepository.GetByKey(SN);
             // 从数据源读取模式
             ICollection<Schema> schema = ConnectDB(ds);
             if (schema != null)
@@ -43,6 +43,14 @@ namespace DC.ETL.Domain.Model
                 iSchemaRepository.Save(schema, ds);
             }
             return schema;
+        }
+        /// <summary>
+        /// TODO: 获取数据源分页列表
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<DataSource> GetAll(Guid SN)
+        {
+            return iDataSourceRepository.GetAll();
         }
         /// <summary>
         /// 获取单个数据源
@@ -53,7 +61,7 @@ namespace DC.ETL.Domain.Model
             return iDataSourceRepository.GetByKey(SN);
         }
         /// <summary>
-        /// 管理平台 保存数据源基本信息
+        /// 保存数据源基本信息
         /// </summary>
         /// <returns>Schema模式集合</returns>
 
@@ -69,7 +77,7 @@ namespace DC.ETL.Domain.Model
             else
             {
                 euInDB.SetBaseInfo(eu);
-                iDataSourceRepository.Update(eu);
+                iDataSourceRepository.Update(euInDB);
             }
             return iDataSourceRepository.SaveChanges();
         }

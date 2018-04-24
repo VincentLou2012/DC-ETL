@@ -37,13 +37,12 @@ namespace DC.ETL.Domain.Model
             return iTaskRepository.GetAll(new ExpressionSpecification<Task>(ex));
         }
         /// <summary>
-        /// 获取所有启用任务
+        /// 获取单个数据源
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Task> GetAll()
+        public Task Get(Guid SN)
         {
-            iTaskRepository.EnableTrack = false;
-            return iTaskRepository.GetAll();
+            return iTaskRepository.GetByKey(SN);
         }
         /// <summary>
         /// 判断抽取单元是否包含启动项。
@@ -80,7 +79,7 @@ namespace DC.ETL.Domain.Model
             else
             {
                 euInDB.SetBaseInfo(eu);
-                iTaskRepository.Update(eu);
+                iTaskRepository.Update(euInDB);
             }
             return iTaskRepository.SaveChanges();
         }

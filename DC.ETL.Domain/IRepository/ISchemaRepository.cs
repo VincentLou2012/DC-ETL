@@ -21,11 +21,5 @@ namespace DC.ETL.Domain
         /// <param name="schema"></param>
         /// <returns></returns>
         int Save(ICollection<Schema> schemas, DataSource ds);
-        /// <summary>
-        /// 保存当前选择模式
-        /// </summary>
-        /// <param name="schemas"></param>
-        /// <returns></returns>
-        int Save(Schema schemas, ICollection<WholeStructure> wholeStructures);
     }
 }

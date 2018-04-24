@@ -64,7 +64,7 @@ namespace DC.ETL.Domain.Model
             else
             {
                 euInDB.SetBaseInfo(eu);
-                iExtractUnitRepository.Update(eu);
+                iExtractUnitRepository.Update(euInDB);
             }
             return iExtractUnitRepository.SaveChanges();
         }
