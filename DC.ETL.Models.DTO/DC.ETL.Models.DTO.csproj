@@ -42,5 +42,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DC.ETL.Infrastructure\DC.ETL.Infrastructure.csproj">
+      <Project>{b5859ff2-b448-4bfb-a52e-5c2ddf9798c5}</Project>
+      <Name>DC.ETL.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
