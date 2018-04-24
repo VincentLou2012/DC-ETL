@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
+using DC.ETL.Domain.Specifications;
+using System.Linq.Expressions;
 
 namespace DC.ETL.Domain.Model
 {
@@ -45,12 +47,15 @@ namespace DC.ETL.Domain.Model
             return schema;
         }
         /// <summary>
-        /// TODO: 获取数据源分页列表
+        /// 获取数据源分页列表
+        /// 目前只编写了根据数据库名称进行模糊搜索逻辑
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<DataSource> GetAll(Guid SN)
+        public IEnumerable<DataSource> GetAll(string DSName, SortOrder sortOrder, int pageNumber, int pageSize)
         {
-            return iDataSourceRepository.GetAll();
+            Expression<Func<DataSource, bool>> ex = t => t.DSName.IndexOf(DSName) >= 0;
+            return iDataSourceRepository.GetAll(new ExpressionSpecification<DataSource>(ex),
+                d=>d.SN, sortOrder, pageNumber, pageSize);
         }
         /// <summary>
         /// 获取单个数据源
