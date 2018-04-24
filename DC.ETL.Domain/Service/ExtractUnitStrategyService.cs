@@ -17,7 +17,7 @@ namespace DC.ETL.Domain.Service
         /// <returns>Schema模式集合</returns>
         public int SaveStrategy(Guid SNextractUnit, ICollection<Guid> SNStrategies)
         {
-            //if (SNextractUnit == null || SNStrategies == null) return -1;// TODO: 替换标准错误代码
+            if (SNextractUnit == null || SNStrategies == null) return -1;// TODO: 替换标准错误代码
             //ExtractUnit extractUnit = iExtractUnitRepository.GetByKey(SNextractUnit);
 
             //Expression<Func<Strategy, bool>> ex = t => SNStrategies.Contains(t.SN);
