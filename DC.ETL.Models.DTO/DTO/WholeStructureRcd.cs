@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DC.ETL.Models.DTO
 {
-    public class WholeStructureRcd : OPRecordDTO
+    public class WholeStructureRcdDTO : OPRecordDTO
     {
         public System.Guid StructureSN { get; set; }
 
