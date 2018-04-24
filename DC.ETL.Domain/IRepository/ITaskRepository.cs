@@ -12,7 +12,7 @@ namespace DC.ETL.Domain
     /// <remarks>
     /// 任务 仓储接口
     /// </remarks>
-    public interface ITaskRepository
+    public interface ITaskRepository : IRepository<Task>
     {
         /// <summary>
         /// 获取满足条件: Task.IsEnabled==True 并且 

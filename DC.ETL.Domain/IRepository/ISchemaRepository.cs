@@ -13,14 +13,19 @@ namespace DC.ETL.Domain
     /// <remarks>
     /// 数据模式 仓储接口
     /// </remarks>
-    public interface ISchemaRepository
+    public interface ISchemaRepository : IRepository<Schema>
     {
         /// <summary>
-        /// 保存数据源 ds 对应的所有模式
+        /// 保存数据源 ds 所有模式
         /// </summary>
         /// <param name="schema"></param>
-        /// <param name="ds"></param>
         /// <returns></returns>
-        int Save(IEnumerable<Schema> schema, DataSource ds);
+        int Save(IEnumerable<Schema> schemas, DataSource ds);
+        /// <summary>
+        /// 保存当前选择模式
+        /// </summary>
+        /// <param name="schemas"></param>
+        /// <returns></returns>
+        int Save(Schema schemas, ICollection<WholeStructure> wholeStructures);
     }
 }
