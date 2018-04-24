@@ -13,11 +13,13 @@ namespace DC.ETL.Domain.Model
     /// </summary>
     public partial class OPRecord : AggregateRoot
     {
+        #region 操作记录
         [Dependency]
-        private readonly IOPRecordRepository iOPRecordRepository
+        private IOPRecordRepository iOPRecordRepository
         {
             get { return Container.Resolve<IOPRecordRepository>("OPRecordRepository"); }
         }
+        #endregion 操作记录
         /// <summary>
         /// 获取单个操作记录
         /// </summary>

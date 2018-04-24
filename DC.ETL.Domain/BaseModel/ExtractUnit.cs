@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
+using DC.ETL.Domain.Specifications;
+using System.Linq.Expressions;
 
 namespace DC.ETL.Domain.Model
 {
@@ -13,11 +15,30 @@ namespace DC.ETL.Domain.Model
     /// </summary>
     public partial class ExtractUnit : AggregateRoot
     {
+
+        #region 抽取单元
         [Dependency]
-        private readonly IExtractUnitRepository iExtractUnitRepository
+        private IExtractUnitRepository iExtractUnitRepository
         {
             get { return Container.Resolve<IExtractUnitRepository>("ExtractUnitRepository"); }
         }
+        #endregion 抽取单元
+
+        #region 数据模式
+        [Dependency]
+        private ISchemaRepository iSchemaRepository
+        {
+            get { return Container.Resolve<ISchemaRepository>("SchemaRepository"); }
+        }
+        #endregion 数据模式
+
+        #region 抽取策略
+        [Dependency]
+        private IStrategyRepository iStrategyRepository
+        {
+            get { return Container.Resolve<IStrategyRepository>("StrategyRepository"); }
+        }
+        #endregion 抽取策略
         /// <summary>
         /// 获取单个抽取单元
         /// </summary>
@@ -33,7 +54,7 @@ namespace DC.ETL.Domain.Model
         /// <param name="eu">设置抽取单元新值</param>
         public int SaveBaseInfo(ExtractUnit eu)
         {
-            if (eu == null) return -1;
+            if (eu == null) return -1;// TODO: 替换标准错误代码
             ExtractUnit euInDB = iExtractUnitRepository.GetByKey(eu.SN);
 
             if (euInDB == null)
@@ -45,6 +66,33 @@ namespace DC.ETL.Domain.Model
                 euInDB.SetBaseInfo(eu);
                 iExtractUnitRepository.Update(eu);
             }
+            return iExtractUnitRepository.SaveChanges();
+        }
+        /// <summary>
+        /// 保存匹配抽取模式
+        /// </summary>
+        /// <returns>Schema模式集合</returns>
+        public int SaveSchema(Guid SNextractUnit, Guid SNschema)
+        {
+            if (SNextractUnit == null || SNschema == null) return -1;// TODO: 替换标准错误代码
+            ExtractUnit extractUnit = iExtractUnitRepository.GetByKey(SNextractUnit);
+            extractUnit.Schema = iSchemaRepository.GetByKey(SNschema);
+            iExtractUnitRepository.Update(extractUnit);
+            return iExtractUnitRepository.SaveChanges();
+        }
+        /// <summary>
+        /// 保存选取的策略
+        /// </summary>
+        /// <returns>Schema模式集合</returns>
+        public int SaveStrategy(Guid SNextractUnit, ICollection<Guid> SNStrategies)
+        {
+            if (SNextractUnit == null || SNStrategies == null) return -1;// TODO: 替换标准错误代码
+            ExtractUnit extractUnit = iExtractUnitRepository.GetByKey(SNextractUnit);
+            
+            Expression<Func<Strategy, bool>> ex = t => SNStrategies.Contains(t.SN);
+            IEnumerable<Strategy> Strategies = iStrategyRepository.GetAll(new ExpressionSpecification<Strategy>(ex));
+            extractUnit.Strategies = Strategies.ToArray();
+            iExtractUnitRepository.Update(extractUnit);
             return iExtractUnitRepository.SaveChanges();
         }
 
@@ -65,21 +113,6 @@ namespace DC.ETL.Domain.Model
             this.Condition = o.Condition;// 条件字符
             this.Params = o.Params;// 参数字符
         }
-        /// <summary>
-        /// TODO: 匹配抽取模式
-        /// </summary>
-        /// <returns>Schema模式集合</returns>
-        public int Schema(ExtractUnit extractUnit)
-        {
-            return iExtractUnitRepository.SaveBaseInfo(extractUnit);
-        }
-        /// <summary>
-        /// TODO: 选取策略
-        /// </summary>
-        /// <returns>Schema模式集合</returns>
-        public int Strategy(ExtractUnit extractUnit)
-        {
-            return iExtractUnitRepository.SaveBaseInfo(extractUnit);
-        }
+
     }
 }

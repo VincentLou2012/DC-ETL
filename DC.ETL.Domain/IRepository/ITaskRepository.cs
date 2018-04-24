@@ -14,12 +14,6 @@ namespace DC.ETL.Domain
     /// </remarks>
     public interface ITaskRepository : IRepository<Task>
     {
-        /// <summary>
-        /// 获取满足条件: Task.IsEnabled==True 并且 
-        /// 任意 Task下包含的 ExtractUnit 至少包含一条 ExtractUnit.IsEnabled==True
-        /// 的所有 Task 数据
-        /// </summary>
-        /// <returns></returns>
-        IEnumerable<Task> GetAllEnable();
+        
     }
 }

@@ -14,11 +14,13 @@ namespace DC.ETL.Domain.Model
     public partial class Strategy : AggregateRoot
     {
 
+        #region 抽取策略
         [Dependency]
-        private readonly IStrategyRepository iStrategyRepository
+        private IStrategyRepository iStrategyRepository
         {
             get { return Container.Resolve<IStrategyRepository>("StrategyRepository"); }
         }
+        #endregion 抽取策略
         /// <summary>
         /// 获取单个抽取策略
         /// </summary>

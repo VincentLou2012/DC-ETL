@@ -13,11 +13,13 @@ namespace DC.ETL.Domain.Model
     /// </summary>
     public partial class Schema : AggregateRoot
     {
+        #region 数据模式
         [Dependency]
-        private readonly ISchemaRepository iSchemaRepository
+        private ISchemaRepository iSchemaRepository
         {
             get { return Container.Resolve<ISchemaRepository>("SchemaRepository"); }
         }
+        #endregion 数据模式
 
         /// <summary>
         /// 获取单个数据模式

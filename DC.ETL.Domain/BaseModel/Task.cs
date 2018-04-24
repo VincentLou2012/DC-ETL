@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
+using DC.ETL.Domain.Specifications;
+using System.Linq.Expressions;
 
 namespace DC.ETL.Domain.Model
 {
@@ -13,19 +15,26 @@ namespace DC.ETL.Domain.Model
     /// </summary>
     public partial class Task : AggregateRoot
     {
+        #region 任务
         [Dependency]
-        private readonly ITaskRepository iTaskRepository
+        private ITaskRepository iTaskRepository
         {
             get { return Container.Resolve<ITaskRepository>("TaskRepository"); }
         }
+        #endregion 任务
 
         /// <summary>
-        /// 获取所有启用任务
+        /// 获取满足条件: Task.IsEnabled==True 并且 
+        /// 任意 Task下包含的 ExtractUnit 至少包含一条 ExtractUnit.IsEnabled==True
+        /// 的所有 Task 数据
         /// </summary>
         /// <returns></returns>
         public IEnumerable<Task> GetAllEnable()
         {
-            return iTaskRepository.GetAllEnable();
+            iTaskRepository.EnableTrack = false;
+            Expression<Func<Task, bool>> ex = t => t.IsEnabled == (int)EIsEnabled.True;
+            ex.And<Task>(t => t.IsExtractUnitEnabled());
+            return iTaskRepository.GetAll(new ExpressionSpecification<Task>(ex));
         }
         /// <summary>
         /// 获取所有启用任务
@@ -33,6 +42,7 @@ namespace DC.ETL.Domain.Model
         /// <returns></returns>
         public IEnumerable<Task> GetAll()
         {
+            iTaskRepository.EnableTrack = false;
             return iTaskRepository.GetAll();
         }
         /// <summary>
@@ -40,7 +50,7 @@ namespace DC.ETL.Domain.Model
         /// 至少包含一条 ExtractUnit.IsEnabled==True
         /// </summary>
         /// <returns></returns>
-        public bool IsExtractUnitEnabled()
+        private bool IsExtractUnitEnabled()
         {
             bool b = false;
             if (Units == null || Units.Count == 0) return b;
@@ -55,14 +65,12 @@ namespace DC.ETL.Domain.Model
             return b;
         }
         /// <summary>
-        /// TODO: 创建任务基本信息
+        /// 创建任务基本信息
         /// </summary>
         /// <param name="task"></param>
-
-
         public int SaveBaseInfo(Task eu)
         {
-            if (eu == null) return -1;
+            if (eu == null) return -1;// TODO: 替换标准错误代码
             Task euInDB = iTaskRepository.GetByKey(eu.SN);
 
             if (euInDB == null)

@@ -20,7 +20,7 @@ namespace DC.ETL.Domain
         /// </summary>
         /// <param name="schema"></param>
         /// <returns></returns>
-        int Save(IEnumerable<Schema> schemas, DataSource ds);
+        int Save(ICollection<Schema> schemas, DataSource ds);
         /// <summary>
         /// 保存当前选择模式
         /// </summary>

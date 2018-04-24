@@ -13,16 +13,22 @@ namespace DC.ETL.Domain.Model
     /// </summary>
     public partial class DataSource : AggregateRoot
     {
+
+        #region 数据源
         [Dependency]
-        private readonly ISchemaRepository iSchemaRepository
-        {
-            get { return Container.Resolve<ISchemaRepository>("SchemaRepository"); }
-        }
-        [Dependency]
-        private readonly IDataSourceRepository iDataSourceRepository
+        private IDataSourceRepository iDataSourceRepository
         {
             get { return Container.Resolve<IDataSourceRepository>("DataSourceRepository"); }
         }
+        #endregion 数据源
+
+        #region 数据模式
+        [Dependency]
+        private ISchemaRepository iSchemaRepository
+        {
+            get { return Container.Resolve<ISchemaRepository>("SchemaRepository"); }
+        }
+        #endregion 数据模式
         /// <summary>
         /// 管理平台 从业务平台获取指定数据源所有Schema模式
         /// </summary>
@@ -31,7 +37,7 @@ namespace DC.ETL.Domain.Model
         {
             DataSource ds = Get(SN);
             // 从数据源读取模式
-            IEnumerable<Schema> schema = ConnectDB(ds);
+            ICollection<Schema> schema = ConnectDB(ds);
             if (schema != null)
             {
                 iSchemaRepository.Save(schema, ds);
@@ -53,7 +59,7 @@ namespace DC.ETL.Domain.Model
 
         public int SaveBaseInfo(DataSource eu)
         {
-            if (eu == null) return -1;
+            if (eu == null) return -1;// TODO: 替换标准错误代码
             DataSource euInDB = iDataSourceRepository.GetByKey(eu.SN);
 
             if (euInDB == null)
@@ -99,7 +105,7 @@ namespace DC.ETL.Domain.Model
         }
 
         // TODO: 数据源模式获取
-        private IEnumerable<Schema> ConnectDB(DataSource ds)
+        private ICollection<Schema> ConnectDB(DataSource ds)
         {
             if (Validate())
                 return null;
