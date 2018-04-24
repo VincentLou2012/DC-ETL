@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DC.ETL.Domain.Model;
 
-namespace DC.ETL.Repository.EFRepository.PO
+namespace DC.ETL.Domain
 {
     /// <summary>
-    /// 数据源 仓储实现
+    /// 抽取策略 仓储接口
     /// </summary>
-    public class DataSourceEFRepository : EFRepository<DataSource>
+    /// <remarks>
+    /// 抽取策略 仓储接口
+    /// </remarks>
+    public interface IStrategyRepository
     {
-
     }
 }

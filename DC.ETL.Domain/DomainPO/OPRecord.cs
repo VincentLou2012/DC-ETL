@@ -12,16 +12,26 @@ namespace DC.ETL.Domain.Model
     /// </summary>
     public partial class OPRecord
     {
-        //记录ID
+        /// <summary>
+        /// 记录ID
+        /// </summary>
         [Key]
         public int ID { get; set; }
-        //操作者ID
+        /// <summary>
+        /// 操作者ID
+        /// </summary>
         public string UID { get; set; }
-        //操作类型
-        public string Optype { get; set; }
-        //操作描述
+        /// <summary>
+        /// 操作类型<see cref="Optype"/>
+        /// </summary>
+        public int Optype { get; set; }
+        /// <summary>
+        /// 操作描述
+        /// </summary>
         public string Describe { get; set; }
-        //修改时间
+        /// <summary>
+        /// 修改时间
+        /// </summary>
         public Nullable<System.DateTime> ModifyDate { get; set; }
     }
 }

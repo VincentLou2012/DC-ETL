@@ -9,7 +9,7 @@ namespace DC.ETL.Domain.Model
     /// <summary>
     /// 全表数据结构
     /// </summary>
-    public partial class WholeStructure : AggregateRoot
+    public partial class WholeStructure : IEntity
     {
 
     }

@@ -7,10 +7,18 @@ using System.Threading.Tasks;
 namespace DC.ETL.Domain.Model
 {
     /// <summary>
-    /// 全表数据结构记录
+    /// 操作类型<see cref="OPRecord"/>
     /// </summary>
-    public partial class WholeStructureRcd
+    public enum EOptype
     {
+        Add = 1,
+        Update = 2,
+        Delete = 3,
+    }
 
+    public enum EIsEnabled
+    {
+        True = 1,
+        False = 0,
     }
 }

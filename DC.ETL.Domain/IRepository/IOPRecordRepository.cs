@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DC.ETL.Domain.Model;
 
-namespace DC.ETL.Repository.EFRepository.PO
+namespace DC.ETL.Domain
 {
     /// <summary>
-    /// 数据模式 仓储实现
+    /// 操作记录 仓储接口
     /// </summary>
-    public class SchemaEFRepository : EFRepository<Schema>
+    /// <remarks>
+    /// 操作记录 仓储接口
+    /// </remarks>
+    public interface IOPRecordRepository
     {
-
     }
 }

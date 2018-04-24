@@ -55,12 +55,12 @@
     <Compile Include="BaseModel\TaskRcd.cs" />
     <Compile Include="BaseModel\UnitRcd.cs" />
     <Compile Include="BaseModel\WholeStructure.cs" />
-    <Compile Include="BaseModel\WholeStructureRcd.cs" />
     <Compile Include="DomainPO\DataSource.cs" />
     <Compile Include="DomainPO\DataSourceRcd.cs" />
     <Compile Include="DomainPO\ExtractStructure.cs" />
     <Compile Include="DomainPO\ExtractUnit.cs" />
     <Compile Include="DomainPO\OPRecord.cs" />
+    <Compile Include="DomainPO\ENums.cs" />
     <Compile Include="DomainPO\Schema.cs" />
     <Compile Include="DomainPO\SchemaRcd.cs" />
     <Compile Include="DomainPO\Strategy.cs" />
@@ -72,7 +72,13 @@
     <Compile Include="DomainPO\WholeStructureRcd.cs" />
     <Compile Include="IAggregateRoot.cs" />
     <Compile Include="IEntity.cs" />
+    <Compile Include="IRepository\IDataSourceRepository.cs" />
+    <Compile Include="IRepository\IExtractUnitRepository.cs" />
+    <Compile Include="IRepository\IOPRecordRepository.cs" />
     <Compile Include="IRepository\IRepository.cs" />
+    <Compile Include="IRepository\ISchemaRepository.cs" />
+    <Compile Include="IRepository\IStrategyRepository.cs" />
+    <Compile Include="IRepository\ITaskRepository.cs" />
     <Compile Include="IRepository\IUnitOfWork.cs" />
     <Compile Include="IRepository\IUnitOfWorkRepositoryContext.cs" />
     <Compile Include="IRepository\SortOrder.cs" />
@@ -89,6 +95,9 @@
       <Project>{b5859ff2-b448-4bfb-a52e-5c2ddf9798c5}</Project>
       <Name>DC.ETL.Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Service\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
