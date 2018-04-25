@@ -43,15 +43,16 @@ namespace DC.ETL.Domain.Model
             if (schema == null) return -1;// TODO: 替换标准错误代码
             Schema schemaInDB = iSchemaRepository.GetByKey(schema.SN);
 
-            schema.AStructure = wholeStructures;
             if (schemaInDB == null)
             {
+                schema.AStructure = wholeStructures;
                 iSchemaRepository.Add(schema);
             }
             else
             {
                 schemaInDB.SetBaseInfo(schema);
                 iSchemaRepository.Update(schemaInDB);
+                iSchemaRepository.UpdateWholeStructure(schemaInDB, wholeStructures);
             }
             return iSchemaRepository.SaveChanges();
         }
@@ -62,13 +63,7 @@ namespace DC.ETL.Domain.Model
         /// <returns></returns>
         public ExtractStructure GetExtractStructure(Guid SN)
         {
-            iSchemaRepository.EnableTrack = false;
-            Expression<Func<Schema, bool>> ex = t => t.IsExtractStructureGuidEqual(SN);
-            Schema schema = iSchemaRepository.GetBySpecification(new ExpressionSpecification<Schema>(ex));
-            ICollection<ExtractStructure> extractStructures = schema.EStructure;
-            if (extractStructures == null) return null;
-            if (extractStructures.Count == 1) return extractStructures.ToArray()[0];
-            throw new Exception("one SN map more than one record.");
+            return iSchemaRepository.GetExtractStructure(SN);
         }
         /// <summary>
         /// 保存抽取模式结构
@@ -77,34 +72,28 @@ namespace DC.ETL.Domain.Model
         /// <returns></returns>
         public int SaveExtractStructure(ExtractStructure extractStructure)
         {
-            Guid SN = extractStructure.SN;
-            Expression<Func<Schema, bool>> ex = t => t.IsExtractStructureGuidEqual(SN);
-            Schema schema = iSchemaRepository.GetBySpecification(new ExpressionSpecification<Schema>(ex));
-            if (schema == null) return -1;// TODO: 替换标准错误代码
-            schema.EStructure.Clear();
-            schema.EStructure.Add(extractStructure);
-
+            iSchemaRepository.UpdateExtractStructure(extractStructure);
             return iSchemaRepository.SaveChanges();
         }
 
-        /// <summary>
-        /// 检查抽取结构GUID值
-        /// </summary>
-        /// <returns></returns>
-        private bool IsExtractStructureGuidEqual(Guid SN)
-        {
-            bool b = false;
-            if (EStructure == null || EStructure.Count == 0) return b;
-            foreach (ExtractStructure eStructure in EStructure)
-            {
-                if (eStructure.SN == SN)
-                {
-                    b = true;
-                    break;
-                }
-            }
-            return b;
-        }
+        ///// <summary>
+        ///// 检查抽取结构GUID值
+        ///// </summary>
+        ///// <returns></returns>
+        //private bool IsExtractStructureGuidEqual(Guid SN)
+        //{
+        //    bool b = false;
+        //    if (EStructure == null || EStructure.Count == 0) return b;
+        //    foreach (ExtractStructure eStructure in EStructure)
+        //    {
+        //        if (eStructure.SN == SN)
+        //        {
+        //            b = true;
+        //            break;
+        //        }
+        //    }
+        //    return b;
+        //}
 
 
         /// <summary>

@@ -21,5 +21,23 @@ namespace DC.ETL.Domain
         /// <param name="schema"></param>
         /// <returns></returns>
         int Save(ICollection<Schema> schemas, DataSource ds);
+        /// <summary>
+        /// 更新模式对应全表结构
+        /// </summary>
+        /// <param name="schema"></param>
+        /// <param name="wholeStructures"></param>
+        void UpdateWholeStructure(Schema schema, ICollection<WholeStructure> wholeStructures);
+        /// <summary>
+        /// 获取抽取模式结构
+        /// </summary>
+        /// <param name="SN"></param>
+        /// <returns></returns>
+        ExtractStructure GetExtractStructure(Guid SN);
+        /// <summary>
+        /// 插入或更新抽取模式结构
+        /// </summary>
+        /// <param name="extractStructure"></param>
+        /// <returns></returns>
+        void UpdateExtractStructure(ExtractStructure extractStructure);
     }
 }

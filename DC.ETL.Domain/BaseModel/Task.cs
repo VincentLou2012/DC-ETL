@@ -31,12 +31,12 @@ namespace DC.ETL.Domain.Model
         /// 的所有 Task 数据
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Task> GetAllEnable()
+        public IEnumerable<TaskDTO> GetAllEnable()
         {
             iTaskRepository.EnableTrack = false;
             Expression<Func<Task, bool>> ex = t => t.IsEnabled == (int)EIsEnabled.True;
             ex.And<Task>(t => t.IsExtractUnitEnabled());
-            return iTaskRepository.GetAll(new ExpressionSpecification<Task>(ex));
+            return AutoMapperUtils.MapToList<TaskDTO>(iTaskRepository.GetAll(new ExpressionSpecification<Task>(ex)));
         }
         /// <summary>
         /// 获取单个数据源
