@@ -14,8 +14,6 @@ namespace DC.ETL.Domain.Model
     {
         [Key]
         public int TaskID { get; set; }
-        //任务序列
-        public System.Guid SN { get; set; }
         //任务名称
         public string Name { get; set; }
         //任务描述

@@ -7,6 +7,8 @@ using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
 using DC.ETL.Domain.Specifications;
 using System.Linq.Expressions;
+using DC.ETL.Infrastructure.Utils;
+using DC.ETL.Models.DTO;
 
 namespace DC.ETL.Domain.Model
 {
@@ -27,9 +29,9 @@ namespace DC.ETL.Domain.Model
         /// 获取单个抽取策略
         /// </summary>
         /// <returns></returns>
-        public Strategy Get(Guid SN)
+        public StrategyDTO Get(Guid SN)
         {
-            return iStrategyRepository.GetByKey(SN);
+            return AutoMapperUtils.MapTo<StrategyDTO>(iStrategyRepository.GetByKey(SN));
         }
 
         /// <summary>

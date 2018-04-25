@@ -7,6 +7,8 @@ using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
 using DC.ETL.Domain.Specifications;
 using System.Linq.Expressions;
+using DC.ETL.Infrastructure.Utils;
+using DC.ETL.Models.DTO;
 
 namespace DC.ETL.Domain.Model
 {
@@ -22,14 +24,13 @@ namespace DC.ETL.Domain.Model
             get { return Container.Resolve<ISchemaRepository>("SchemaRepository"); }
         }
         #endregion 数据模式
-
         /// <summary>
         /// 获取单个数据模式
         /// </summary>
         /// <returns></returns>
-        public Schema Get(Guid SN)
+        public SchemaDTO Get(Guid SN)
         {
-            return iSchemaRepository.GetByKey(SN);
+            return AutoMapperUtils.MapTo<SchemaDTO>(iSchemaRepository.GetByKey(SN));
         }
 
         /// <summary>

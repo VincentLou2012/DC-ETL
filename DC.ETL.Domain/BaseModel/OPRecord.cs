@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
+using DC.ETL.Infrastructure.Utils;
+using DC.ETL.Models.DTO;
 
 namespace DC.ETL.Domain.Model
 {
@@ -24,9 +26,9 @@ namespace DC.ETL.Domain.Model
         /// 获取单个操作记录
         /// </summary>
         /// <returns></returns>
-        public OPRecord Get(Guid SN)
+        public OPRecordDTO Get(Guid SN)
         {
-            return iOPRecordRepository.GetByKey(SN);
+            return AutoMapperUtils.MapTo<OPRecordDTO>(iOPRecordRepository.GetByKey(SN));
         }
     }
 }

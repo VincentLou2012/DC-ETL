@@ -8,6 +8,8 @@ using System.Linq.Expressions;
 using DC.ETL.Domain.Model;
 using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
+using DC.ETL.Infrastructure.Utils;
+using DC.ETL.Models.DTO;
 
 namespace DC.ETL.Domain.Service
 {
@@ -32,7 +34,7 @@ namespace DC.ETL.Domain.Service
         /// 管理平台 从业务平台获取指定数据源所有Schema模式
         /// </summary>
         /// <returns>Schema模式集合</returns>
-        public IEnumerable<Schema> GetSchema(Guid SN)
+        public IEnumerable<SchemaDTO> GetSchema(Guid SN)
         {
             DataSource ds = iDataSourceRepository.GetByKey(SN);
             // 从数据源读取模式
@@ -41,7 +43,7 @@ namespace DC.ETL.Domain.Service
             {
                 iSchemaRepository.Save(schema, ds);
             }
-            return schema;
+            return AutoMapperUtils.MapToList<SchemaDTO>(schema);
         }
 
 

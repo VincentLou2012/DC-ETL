@@ -7,6 +7,8 @@ using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
 using DC.ETL.Domain.Specifications;
 using System.Linq.Expressions;
+using DC.ETL.Infrastructure.Utils;
+using DC.ETL.Models.DTO;
 
 namespace DC.ETL.Domain.Model
 {
@@ -40,9 +42,9 @@ namespace DC.ETL.Domain.Model
         /// 获取单个数据源
         /// </summary>
         /// <returns></returns>
-        public Task Get(Guid SN)
+        public TaskDTO Get(Guid SN)
         {
-            return iTaskRepository.GetByKey(SN);
+            return AutoMapperUtils.MapTo<TaskDTO>(iTaskRepository.GetByKey(SN));
         }
         /// <summary>
         /// 判断抽取单元是否包含启动项。

@@ -7,6 +7,8 @@ using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
 using DC.ETL.Domain.Specifications;
 using System.Linq.Expressions;
+using DC.ETL.Infrastructure.Utils;
+using DC.ETL.Models.DTO;
 
 namespace DC.ETL.Domain.Model
 {
@@ -24,28 +26,13 @@ namespace DC.ETL.Domain.Model
         }
         #endregion 抽取单元
 
-        //#region 数据模式
-        //[Dependency]
-        //private ISchemaRepository iSchemaRepository
-        //{
-        //    get { return Container.Resolve<ISchemaRepository>("SchemaRepository"); }
-        //}
-        //#endregion 数据模式
-
-        //#region 抽取策略
-        //[Dependency]
-        //private IStrategyRepository iStrategyRepository
-        //{
-        //    get { return Container.Resolve<IStrategyRepository>("StrategyRepository"); }
-        //}
-        //#endregion 抽取策略
         /// <summary>
         /// 获取单个抽取单元
         /// </summary>
         /// <returns></returns>
-        public ExtractUnit Get(Guid SN)
+        public ExtractUnitDTO Get(Guid SN)
         {
-            return iExtractUnitRepository.GetByKey(SN);
+            return AutoMapperUtils.MapTo<ExtractUnitDTO>(iExtractUnitRepository.GetByKey(SN));
         }
 
         /// <summary>
@@ -68,16 +55,7 @@ namespace DC.ETL.Domain.Model
             }
             return iExtractUnitRepository.SaveChanges();
         }
-        /// <summary>
-        /// 更新抽取单元 Schema模式和策略 等
-        /// </summary>
-        /// <param name="extractUnit"></param>
-        /// <returns></returns>
-        public int Update(ExtractUnit extractUnit)
-        {
-            iExtractUnitRepository.Update(extractUnit);
-            return iExtractUnitRepository.SaveChanges();
-        }
+
         ///// <summary>
         ///// 保存匹配抽取模式
         ///// </summary>
