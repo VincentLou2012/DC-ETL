@@ -15,5 +15,11 @@ namespace DC.ETL.Domain
     /// </remarks>
     public interface IStrategyRepository : IRepository<Strategy>
     {
+        /// <summary>
+        /// 获取抽取策略列表
+        /// </summary>
+        /// <param name="SNStrategies"></param>
+        /// <returns></returns>
+        IEnumerable<Strategy> GetAll(ICollection<Guid> SNStrategies);
     }
 }

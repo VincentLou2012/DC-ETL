@@ -24,21 +24,21 @@ namespace DC.ETL.Domain.Model
         }
         #endregion 抽取单元
 
-        #region 数据模式
-        [Dependency]
-        private ISchemaRepository iSchemaRepository
-        {
-            get { return Container.Resolve<ISchemaRepository>("SchemaRepository"); }
-        }
-        #endregion 数据模式
+        //#region 数据模式
+        //[Dependency]
+        //private ISchemaRepository iSchemaRepository
+        //{
+        //    get { return Container.Resolve<ISchemaRepository>("SchemaRepository"); }
+        //}
+        //#endregion 数据模式
 
-        #region 抽取策略
-        [Dependency]
-        private IStrategyRepository iStrategyRepository
-        {
-            get { return Container.Resolve<IStrategyRepository>("StrategyRepository"); }
-        }
-        #endregion 抽取策略
+        //#region 抽取策略
+        //[Dependency]
+        //private IStrategyRepository iStrategyRepository
+        //{
+        //    get { return Container.Resolve<IStrategyRepository>("StrategyRepository"); }
+        //}
+        //#endregion 抽取策略
         /// <summary>
         /// 获取单个抽取单元
         /// </summary>
@@ -76,7 +76,7 @@ namespace DC.ETL.Domain.Model
         public int Update(ExtractUnit extractUnit)
         {
             iExtractUnitRepository.Update(extractUnit);
-            return iStrategyRepository.SaveChanges();
+            return iExtractUnitRepository.SaveChanges();
         }
         ///// <summary>
         ///// 保存匹配抽取模式

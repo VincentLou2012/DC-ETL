@@ -31,24 +31,7 @@ namespace DC.ETL.Domain.Model
         {
             return iStrategyRepository.GetByKey(SN);
         }
-        /// <summary>
-        /// 获取抽取策略列表
-        /// </summary>
-        /// <param name="SNStrategies"></param>
-        /// <returns></returns>
-        public IEnumerable<Strategy> GetAll(ICollection<Guid> SNStrategies)
-        {
-            Expression<Func<Strategy, bool>> ex = t => SNStrategies.Contains(t.SN);
-            return iStrategyRepository.GetAll(new ExpressionSpecification<Strategy>(ex));
-        }
-        public int Update(ICollection<Strategy> Strategies)
-        {
-            foreach (Strategy item in Strategies)
-            {
-                iStrategyRepository.Update(item);
-            }
-            return iStrategyRepository.SaveChanges();
-        }
+
         /// <summary>
         /// 创建抽取策略基本信息
         /// </summary>
