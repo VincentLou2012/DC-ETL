@@ -62,6 +62,7 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -77,12 +78,19 @@
     <Compile Include="Cache\ICacheProvider.cs" />
     <Compile Include="Cache\Redis\RedisCacheProvider.cs" />
     <Compile Include="Cache\Redis\RedisUtils.cs" />
+    <Compile Include="Common.cs" />
     <Compile Include="Container\Container.cs" />
     <Compile Include="Container\ContainerFactory.cs" />
     <Compile Include="Container\ContainerRun.cs" />
     <Compile Include="Container\IContainer.cs" />
     <Compile Include="Container\UnityResolver.cs" />
+    <Compile Include="DataHandler\IReader.cs" />
+    <Compile Include="DataHandler\IWrite.cs" />
+    <Compile Include="DataHandler\IWriter.cs" />
+    <Compile Include="DataHandler\Reader\Clients\MSSQL\MSSQLReader.cs" />
     <Compile Include="DisposableResource.cs" />
+    <Compile Include="MSMQ\Messages.cs" />
+    <Compile Include="MSMQ\MSMQ.cs" />
     <Compile Include="PagedResult.cs" />
     <Compile Include="Log\LibLog\LibLog.4.2\LibLog.cs" />
     <Compile Include="Log\LibLog\LogExtensions.cs" />
@@ -104,6 +112,10 @@
   <ItemGroup>
     <Content Include="Log\log2db.sql" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DataHandler\Reader\Clients\MySQL\" />
+    <Folder Include="DataHandler\Reader\Clients\Oracle\" />
+    <Folder Include="DataHandler\Reader\Clients\SAP\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
