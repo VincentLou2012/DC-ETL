@@ -26,33 +26,6 @@ namespace DC.ETL.Repository.EFRepository
             if (ds == null) return null;
             return ds.Schemas;
         }
-        /// <summary>
-        /// 新增或保存数据源基本信息 不包含Schema模式??
-        /// </summary>
-        /// <param name="ds">设置ds新值</param>
-        public int SaveBaseInfo(DataSource ds)
-        {
-            if (ds == null) return -1;
-            DataSource dsInDB = GetByKey(ds.SN);
-
-            // 源地址
-
-            if(dsInDB == null)
-            {
-                
-                Add(ds);
-            }
-            else
-            {
-                dsInDB.SetBaseInfo(ds);
-                Update(ds);
-            }
-            return SaveChanges();
-        }
-
-        private void UpdateFields(DataSource dsInDB, DataSource ds)
-        {
-
-        }
+        
     }
 }

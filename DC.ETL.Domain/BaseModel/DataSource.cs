@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Practices.Unity;
+using DC.ETL.Infrastructure.Container;
+using DC.ETL.Domain.Specifications;
+using System.Linq.Expressions;
 
 namespace DC.ETL.Domain.Model
 {
@@ -12,22 +16,24 @@ namespace DC.ETL.Domain.Model
     public partial class DataSource : AggregateRoot
     {
 
-        /// <summary>
-        /// 管理平台 获取指定数据源所有Schema模式
-        /// </summary>
-        /// <returns>Schema模式集合</returns>
-        public IEnumerable<Schema> GetSchema(DataSource ds)
+        #region 数据源
+        [Dependency]
+        private IDataSourceRepository iDataSourceRepository
         {
-            Guid SN = ds.SN;
-            // TODO: 这里从Unity获取实例?
-            ISchemaRepository isr = null;// Container.Resolve<ISchemaRepository>("SchemaRepository");
-            // 从数据源读取模式
-            IEnumerable<Schema> schema = ConnectDB(ds);
-            if (schema != null)
-            {
-                isr.Save(schema, ds);
-            }
-            return schema;
+            get { return Container.Resolve<IDataSourceRepository>("DataSourceRepository"); }
+        }
+        #endregion 数据源
+
+        /// <summary>
+        /// 获取数据源分页列表
+        /// 目前只编写了根据数据库名称进行模糊搜索逻辑
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<DataSource> GetAll(string DSName, SortOrder sortOrder, int pageNumber, int pageSize)
+        {
+            Expression<Func<DataSource, bool>> ex = t => t.DSName.IndexOf(DSName) >= 0;
+            return iDataSourceRepository.GetAll(new ExpressionSpecification<DataSource>(ex),
+                d=>d.SN, sortOrder, pageNumber, pageSize);
         }
         /// <summary>
         /// 获取单个数据源
@@ -35,52 +41,53 @@ namespace DC.ETL.Domain.Model
         /// <returns></returns>
         public DataSource Get(Guid SN)
         {
-            // TODO: 这里从Unity获取实例?
-            IRepository<DataSource> itr = null;// Container.Resolve<IRepository<DataSource>>("DataSourceRepository");
-            return itr.GetByKey(SN);
+            return iDataSourceRepository.GetByKey(SN);
         }
         /// <summary>
-        /// 管理平台 修改数据源基本信息
+        /// 保存数据源基本信息
         /// </summary>
         /// <returns>Schema模式集合</returns>
-        public int SaveBaseInfo(DataSource ds)
+
+        public int SaveBaseInfo(DataSource eu)
         {
-            Guid SN = ds.SN;
-            // TODO: 这里从Unity获取实例?
-            IDataSourceRepository isr = null;// Container.Resolve<IDataSourceRepository>("DataSourceRepository");
-            return isr.SaveBaseInfo(ds);
+            if (eu == null) return -1;// TODO: 替换标准错误代码
+            DataSource euInDB = iDataSourceRepository.GetByKey(eu.SN);
+
+            if (euInDB == null)
+            {
+                iDataSourceRepository.Add(eu);
+            }
+            else
+            {
+                euInDB.SetBaseInfo(eu);
+                iDataSourceRepository.Update(euInDB);
+            }
+            return iDataSourceRepository.SaveChanges();
         }
 
-        public void SetBaseInfo(DataSource ds)
+        /// <summary>
+        /// 更新字段
+        /// </summary>
+        /// <param name="o"></param>
+        private void SetBaseInfo(DataSource o)
         {
-            this.DSID = ds.DSID;// 数据源主键
-            this.DSName = ds.DSName;// 数据源名称
-            this.DSType = ds.DSType;// 数据源类型
-            this.Address = ds.Address;// 源地址
-            this.InstanceName = ds.InstanceName;// 实例名
-            this.Port = ds.Port;// 端口
-            this.SystemNum = ds.SystemNum;// 系统号
-            this.ClientNum = ds.ClientNum;// 客户端号
-            this.SysLanguage = ds.SysLanguage;// 系统语言
-            this.ConnectionParams = ds.ConnectionParams;// 连接参数
-            this.UserName = ds.UserName;// 账户用户名
-            this.IsTarget = ds.IsTarget;// 是否是输出目标数据源
-            this.UserPassword = ds.UserPassword;// 账户密码
-            this.Keyword = ds.Keyword;// 数据源关键词(预留)
-            this.Aspect = ds.Aspect;// 数据源方面(预留)
-            this.Describe = ds.Describe;// 数据源描述
+            //this.DSID = ds.DSID;// 数据源主键
+            this.DSName = o.DSName;// 数据源名称
+            this.DSType = o.DSType;// 数据源类型
+            this.Address = o.Address;// 源地址
+            this.InstanceName = o.InstanceName;// 实例名
+            this.Port = o.Port;// 端口
+            this.SystemNum = o.SystemNum;// 系统号
+            this.ClientNum = o.ClientNum;// 客户端号
+            this.SysLanguage = o.SysLanguage;// 系统语言
+            this.ConnectionParams = o.ConnectionParams;// 连接参数
+            this.UserName = o.UserName;// 账户用户名
+            this.IsTarget = o.IsTarget;// 是否是输出目标数据源
+            this.UserPassword = o.UserPassword;// 账户密码
+            this.Keyword = o.Keyword;// 数据源关键词(预留)
+            this.Aspect = o.Aspect;// 数据源方面(预留)
+            this.Describe = o.Describe;// 数据源描述
         }
 
-        // TODO: 数据源验证
-        private bool Validate()
-        {
-            return false;
-        }
-
-        // TODO: 数据源模式获取
-        private IEnumerable<Schema> ConnectDB(DataSource ds)
-        {
-            return null;
-        }
     }
 }

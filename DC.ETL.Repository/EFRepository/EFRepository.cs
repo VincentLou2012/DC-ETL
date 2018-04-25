@@ -104,6 +104,19 @@ namespace DC.ETL.Repository.EFRepository
         {
             _efContext.RegisterModified(aggregateRoot);
         }
+
+        /// <summary>
+        /// 批量更新
+        /// </summary>
+        /// <param name="aggregateRoot"></param>
+        /// <returns></returns>
+        public void Update(ICollection<TAggregateRoot> aggregateRoot)
+        {
+            foreach (TAggregateRoot item in aggregateRoot)
+            {
+                Update(item);
+            }
+        }
         #endregion
 
         #region Query

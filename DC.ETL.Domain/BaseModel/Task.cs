@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Practices.Unity;
+using DC.ETL.Infrastructure.Container;
+using DC.ETL.Domain.Specifications;
+using System.Linq.Expressions;
 
 namespace DC.ETL.Domain.Model
 {
@@ -11,22 +15,41 @@ namespace DC.ETL.Domain.Model
     /// </summary>
     public partial class Task : AggregateRoot
     {
+        #region 任务
+        [Dependency]
+        private ITaskRepository iTaskRepository
+        {
+            get { return Container.Resolve<ITaskRepository>("TaskRepository"); }
+        }
+        #endregion 任务
+
         /// <summary>
-        /// 获取所有启用任务
+        /// 获取满足条件: Task.IsEnabled==True 并且 
+        /// 任意 Task下包含的 ExtractUnit 至少包含一条 ExtractUnit.IsEnabled==True
+        /// 的所有 Task 数据
         /// </summary>
         /// <returns></returns>
         public IEnumerable<Task> GetAllEnable()
         {
-            // TODO: 这里从Unity获取实例?
-            ITaskRepository itr = null;// Container.Resolve<ITaskRepository>("TaskRepository");
-            return itr.GetAllEnable();
+            iTaskRepository.EnableTrack = false;
+            Expression<Func<Task, bool>> ex = t => t.IsEnabled == (int)EIsEnabled.True;
+            ex.And<Task>(t => t.IsExtractUnitEnabled());
+            return iTaskRepository.GetAll(new ExpressionSpecification<Task>(ex));
+        }
+        /// <summary>
+        /// 获取单个数据源
+        /// </summary>
+        /// <returns></returns>
+        public Task Get(Guid SN)
+        {
+            return iTaskRepository.GetByKey(SN);
         }
         /// <summary>
         /// 判断抽取单元是否包含启动项。
         /// 至少包含一条 ExtractUnit.IsEnabled==True
         /// </summary>
         /// <returns></returns>
-        public bool IsExtractUnitEnabled()
+        private bool IsExtractUnitEnabled()
         {
             bool b = false;
             if (Units == null || Units.Count == 0) return b;
@@ -39,6 +62,39 @@ namespace DC.ETL.Domain.Model
                 }
             }
             return b;
+        }
+        /// <summary>
+        /// 创建任务基本信息
+        /// </summary>
+        /// <param name="task"></param>
+        public int SaveBaseInfo(Task eu)
+        {
+            if (eu == null) return -1;// TODO: 替换标准错误代码
+            Task euInDB = iTaskRepository.GetByKey(eu.SN);
+
+            if (euInDB == null)
+            {
+                iTaskRepository.Add(eu);
+            }
+            else
+            {
+                euInDB.SetBaseInfo(eu);
+                iTaskRepository.Update(euInDB);
+            }
+            return iTaskRepository.SaveChanges();
+        }
+
+        /// <summary>
+        /// 更新字段
+        /// </summary>
+        /// <param name="o"></param>
+        private void SetBaseInfo(Task o)
+        {
+            //this.TaskID = o.TaskID;// 	任务ID
+            this.SN = o.SN;// 	任务序列
+            this.Name = o.Name;// 	任务名称
+            this.Describe = o.Describe;// 	任务描述
+            this.Comment = o.Comment;// 	备注
         }
     }
 }

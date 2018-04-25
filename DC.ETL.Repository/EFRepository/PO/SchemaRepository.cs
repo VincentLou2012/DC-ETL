@@ -16,14 +16,18 @@ namespace DC.ETL.Repository.EFRepository
     public class SchemaRepository : EFRepository<Schema>, ISchemaRepository
     {
         /// <summary>
-        /// 保存数据源 ds 对应的所有模式
+        /// 保存数据源 ds 所有模式
         /// </summary>
         /// <param name="schema"></param>
-        /// <param name="ds"></param>
         /// <returns></returns>
-        public int Save(IEnumerable<Schema> schema, DataSource ds)
+        public int Save(ICollection<Schema> schemas, DataSource ds)
         {
-            throw new NotImplementedException();
+            foreach (Schema schema in schemas)
+            {
+                schema.Source = ds;
+            }
+            return SaveChanges();
         }
+
     }
 }

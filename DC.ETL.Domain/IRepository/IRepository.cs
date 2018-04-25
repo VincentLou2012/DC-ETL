@@ -41,7 +41,12 @@ namespace DC.ETL.Domain
         /// </summary>
         /// <param name="aggregateRoot"></param>
         void Update(TAggregateRoot aggregateRoot);
-
+        /// <summary>
+        /// 批量更新
+        /// </summary>
+        /// <param name="aggregateRoot"></param>
+        /// <returns></returns>
+        void Update(ICollection<TAggregateRoot> aggregateRoot);
         #endregion
 
         #region Query

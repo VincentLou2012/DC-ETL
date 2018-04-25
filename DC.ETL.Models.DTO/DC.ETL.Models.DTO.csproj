@@ -40,7 +40,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOMapRegister.cs" />
+    <Compile Include="DTO\DataSource.cs" />
+    <Compile Include="DTO\DataSourceRcd.cs" />
+    <Compile Include="DTO\ExtractStructure.cs" />
+    <Compile Include="DTO\ExtractUnit.cs" />
+    <Compile Include="DTO\OPRecord.cs" />
+    <Compile Include="DTO\Schema.cs" />
+    <Compile Include="DTO\SchemaRcd.cs" />
+    <Compile Include="DTO\Strategy.cs" />
+    <Compile Include="DTO\StructureRcd.cs" />
+    <Compile Include="DTO\Task.cs" />
+    <Compile Include="DTO\TaskRcd.cs" />
+    <Compile Include="DTO\UnitRcd.cs" />
+    <Compile Include="DTO\WholeStructure.cs" />
+    <Compile Include="DTO\WholeStructureRcd.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DC.ETL.Domain\DC.ETL.Domain.csproj">
+      <Project>{6dfe99d3-7183-485b-b67a-ead3edcaa59f}</Project>
+      <Name>DC.ETL.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DC.ETL.Infrastructure\DC.ETL.Infrastructure.csproj">
+      <Project>{b5859ff2-b448-4bfb-a52e-5c2ddf9798c5}</Project>
+      <Name>DC.ETL.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

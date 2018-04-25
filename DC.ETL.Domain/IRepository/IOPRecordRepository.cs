@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DC.ETL.Domain.Model;
 
 namespace DC.ETL.Domain
 {
@@ -12,7 +13,7 @@ namespace DC.ETL.Domain
     /// <remarks>
     /// 操作记录 仓储接口
     /// </remarks>
-    public interface IOPRecordRepository
+    public interface IOPRecordRepository : IRepository<OPRecord>
     {
     }
 }
