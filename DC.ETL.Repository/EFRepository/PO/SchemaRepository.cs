@@ -22,13 +22,12 @@ namespace DC.ETL.Repository.EFRepository
         /// </summary>
         /// <param name="schema"></param>
         /// <returns></returns>
-        public int Save(ICollection<Schema> schemas, DataSource ds)
+        public void UpdateSchema(ICollection<Schema> schemas, DataSource ds)
         {
             foreach (Schema schema in schemas)
             {
                 schema.Source = ds;
             }
-            return SaveChanges();
         }
         /// <summary>
         /// 更新模式对应全表结构

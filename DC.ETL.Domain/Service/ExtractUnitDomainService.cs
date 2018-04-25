@@ -8,9 +8,13 @@ using System.Linq.Expressions;
 using DC.ETL.Domain.Model;
 using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
+using DC.ETL.Models.DTO;
 
 namespace DC.ETL.Domain.Service
 {
+    /// <summary>
+    /// 抽取单元领域服务
+    /// </summary>
     public class ExtractUnitDomainService : IExtractUnitDomainService
     {
 
@@ -40,7 +44,7 @@ namespace DC.ETL.Domain.Service
         /// <summary>
         /// 保存选取的策略
         /// </summary>
-        /// <returns>Schema模式集合</returns>
+        /// <returns>保存操作结果</returns>
         public int SaveStrategy(Guid SNextractUnit, ICollection<Guid> SNStrategies)
         {
             if (SNextractUnit == null || SNStrategies == null) return -1;// TODO: 替换标准错误代码
@@ -68,7 +72,7 @@ namespace DC.ETL.Domain.Service
         /// <summary>
         /// 保存匹配抽取模式
         /// </summary>
-        /// <returns>Schema模式集合</returns>
+        /// <returns>保存操作结果</returns>
         public int SaveSchema(Guid SNextractUnit, Guid SNschema)
         {
             if (SNextractUnit == null || SNschema == null) return -1;// TODO: 替换标准错误代码
@@ -79,6 +83,17 @@ namespace DC.ETL.Domain.Service
             iExtractUnitRepository.Update(extractUnit);
             return iExtractUnitRepository.SaveChanges();
         }
+        /// <summary>
+        /// 根据抽取模式的一些特征自动选取可能需要的模式并返回
+        /// TODO: 抽取模式的特征具体怎么计算还不清楚
+        /// </summary>
+        /// <returns>Schema模式</returns>
+        public SchemaDTO AutoGetSchema(ExtractUnit extractUnit)
+        {
+            Expression<Func<Schema, bool>> ex = t => t.Units. == extractUnit.TargetName;//TODO: lambda表达式有问题
 
+            Schema extractUnitInDB = iSchemaRepository.GetBySpecification(new ExpressionSpecification<Schema>(ex));
+
+        }
     }
 }

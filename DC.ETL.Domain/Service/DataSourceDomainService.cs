@@ -31,7 +31,7 @@ namespace DC.ETL.Domain.Service
         }
         #endregion 数据模式
         /// <summary>
-        /// 管理平台 从业务平台获取指定数据源所有Schema模式
+        /// 从业务平台获取指定数据源所有Schema模式 并存储获取的模式
         /// </summary>
         /// <returns>Schema模式集合</returns>
         public IEnumerable<SchemaDTO> GetSchema(Guid SN)
@@ -39,10 +39,10 @@ namespace DC.ETL.Domain.Service
             DataSource ds = iDataSourceRepository.GetByKey(SN);
             // 从数据源读取模式
             ICollection<Schema> schema = ConnectDB(ds);
-            if (schema != null)
-            {
-                iSchemaRepository.Save(schema, ds);
-            }
+            if (schema == null)
+                return null;
+            iSchemaRepository.UpdateSchema(schema, ds);
+            iSchemaRepository.SaveChanges();
             return AutoMapperUtils.MapToList<SchemaDTO>(schema);
         }
 

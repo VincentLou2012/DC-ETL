@@ -56,33 +56,6 @@ namespace DC.ETL.Domain.Model
             return iExtractUnitRepository.SaveChanges();
         }
 
-        ///// <summary>
-        ///// 保存匹配抽取模式
-        ///// </summary>
-        ///// <returns>Schema模式集合</returns>
-        //public int SaveSchema(Guid SNextractUnit, Guid SNschema)
-        //{
-        //    if (SNextractUnit == null || SNschema == null) return -1;
-        //    ExtractUnit extractUnit = iExtractUnitRepository.GetByKey(SNextractUnit);
-        //    extractUnit.Schema = iSchemaRepository.GetByKey(SNschema);
-        //    iExtractUnitRepository.Update(extractUnit);
-        //    return iExtractUnitRepository.SaveChanges();
-        //}
-        ///// <summary>
-        ///// 保存选取的策略
-        ///// </summary>
-        ///// <returns>Schema模式集合</returns>
-        //public int SaveStrategy(Guid SNextractUnit, ICollection<Guid> SNStrategies)
-        //{
-        //    if (SNextractUnit == null || SNStrategies == null) return -1;
-        //    ExtractUnit extractUnit = iExtractUnitRepository.GetByKey(SNextractUnit);
-            
-        //    Expression<Func<Strategy, bool>> ex = t => SNStrategies.Contains(t.SN);
-        //    IEnumerable<Strategy> Strategies = iStrategyRepository.GetAll(new ExpressionSpecification<Strategy>(ex));
-        //    extractUnit.Strategies = Strategies.ToArray();
-        //    iExtractUnitRepository.Update(extractUnit);
-        //    return iExtractUnitRepository.SaveChanges();
-        //}
 
         /// <summary>
         /// 更新字段

@@ -33,7 +33,7 @@ namespace DC.ETL.Domain.Model
         /// <returns></returns>
         public IEnumerable<DataSourceDTO> GetAll(string DSName, SortOrder sortOrder, int pageNumber, int pageSize)
         {
-            Expression<Func<DataSource, bool>> ex = t => t.DSName.IndexOf(DSName) >= 0;
+            Expression<Func<DataSource, bool>> ex = t => t.DSName.Contains(DSName);
             return AutoMapperUtils.MapToList<DataSourceDTO>(iDataSourceRepository.GetAll(new ExpressionSpecification<DataSource>(ex),
                 d=>d.SN, sortOrder, pageNumber, pageSize));
         }

@@ -20,7 +20,7 @@ namespace DC.ETL.Domain
         /// </summary>
         /// <param name="schema"></param>
         /// <returns></returns>
-        int Save(ICollection<Schema> schemas, DataSource ds);
+        void UpdateSchema(ICollection<Schema> schemas, DataSource ds);
         /// <summary>
         /// 更新模式对应全表结构
         /// </summary>

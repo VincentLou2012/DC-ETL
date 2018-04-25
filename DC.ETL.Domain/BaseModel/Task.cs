@@ -35,7 +35,7 @@ namespace DC.ETL.Domain.Model
         {
             iTaskRepository.EnableTrack = false;
             Expression<Func<Task, bool>> ex = t => t.IsEnabled == (int)EIsEnabled.True;
-            ex.And<Task>(t => t.IsExtractUnitEnabled());
+            ex.And<Task>(t => t.IsExtractUnitEnabled());//TODO: lambda表达式有问题
             return AutoMapperUtils.MapToList<TaskDTO>(iTaskRepository.GetAll(new ExpressionSpecification<Task>(ex)));
         }
         /// <summary>
