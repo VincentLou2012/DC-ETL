@@ -26,9 +26,11 @@ namespace DC.ETL.Domain.Model
         /// 获取单个操作记录
         /// </summary>
         /// <returns></returns>
-        public OPRecordDTO Get(Guid SN)
+        public OPRecordDTO Get(Guid SN) 
         {
             return AutoMapperUtils.MapTo<OPRecordDTO>(iOPRecordRepository.GetByKey(SN));
         }
+
+
     }
 }

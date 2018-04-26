@@ -42,6 +42,45 @@ namespace DC.ETL.Domain.Service
             get { return Container.Resolve<IStrategyRepository>("StrategyRepository"); }
         }
         #endregion 抽取策略
+
+        #region 操作记录
+        [Dependency]
+        private IOPRecordRepository iOPRecordRepository
+        {
+            get { return Container.Resolve<IOPRecordRepository>("OPRecordRepository"); }
+        }
+        #endregion 操作记录
+
+
+        /// <summary>
+        /// 新增或保存抽取单元基本信息 不包含Schema模式和策略??
+        /// </summary>
+        /// <param name="eu">设置抽取单元新值</param>
+        public int SaveBaseInfo(ExtractUnit eu)
+        {
+            if (eu == null) return -1;// TODO: 替换标准错误代码
+            ExtractUnit euInDB = iExtractUnitRepository.GetByKey(eu.SN);
+
+            EOptype eop = EOptype.Update;
+            if (euInDB == null)
+            {
+                eop = EOptype.Add;
+                iExtractUnitRepository.Add(eu);
+            }
+            else
+            {
+                euInDB.SetBaseInfo(eu);
+                iExtractUnitRepository.Update(euInDB);
+            }
+            int nRet = iExtractUnitRepository.SaveChanges();
+
+            // 新增操作记录
+            UnitRcd exRcd = new UnitRcd(nRet, euInDB, eop);
+            iOPRecordRepository.Add(exRcd);
+            int nOpRet = iOPRecordRepository.SaveChanges();
+            return nRet;
+        }
+
         /// <summary>
         /// 保存选取的策略
         /// </summary>

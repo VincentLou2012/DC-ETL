@@ -45,33 +45,12 @@ namespace DC.ETL.Domain.Model
         {
             return AutoMapperUtils.MapTo<DataSourceDTO>(iDataSourceRepository.GetByKey(SN));
         }
-        /// <summary>
-        /// 保存数据源基本信息
-        /// </summary>
-        /// <returns>Schema模式集合</returns>
-
-        public int SaveBaseInfo(DataSource eu)
-        {
-            if (eu == null) return -1;// TODO: 替换标准错误代码
-            DataSource euInDB = iDataSourceRepository.GetByKey(eu.SN);
-
-            if (euInDB == null)
-            {
-                iDataSourceRepository.Add(eu);
-            }
-            else
-            {
-                euInDB.SetBaseInfo(eu);
-                iDataSourceRepository.Update(euInDB);
-            }
-            return iDataSourceRepository.SaveChanges();
-        }
-
+        
         /// <summary>
         /// 更新字段
         /// </summary>
         /// <param name="o"></param>
-        private void SetBaseInfo(DataSource o)
+        public void SetBaseInfo(DataSource o)
         {
             //this.DSID = ds.DSID;// 数据源主键
             this.DSName = o.DSName;// 数据源名称

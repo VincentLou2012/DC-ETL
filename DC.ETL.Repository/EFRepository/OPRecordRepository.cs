@@ -7,6 +7,8 @@ using DC.ETL.Domain.Model;
 using DC.ETL.Domain;
 using DC.ETL.Domain.Specifications;
 using System.Linq.Expressions;
+using DC.ETL.Repository.UnitOfWork;
+using System.Data.Entity;
 
 namespace DC.ETL.Repository.EFRepository
 {
@@ -15,6 +17,6 @@ namespace DC.ETL.Repository.EFRepository
     /// </summary>
     public class OPRecordRepository : EFRepository<OPRecord>, IOPRecordRepository
     {
-
+        
     }
 }

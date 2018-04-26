@@ -11,6 +11,14 @@ namespace DC.ETL.Domain.Model
     /// </summary>
     public partial class DataSourceRcd
     {
+        public DataSourceRcd()
+        {
 
+        }
+
+        public DataSourceRcd(int nErrorCode, DataSource ex, EOptype eop)
+        {
+
+        }
     }
 }

@@ -35,33 +35,12 @@ namespace DC.ETL.Domain.Model
             return AutoMapperUtils.MapTo<ExtractUnitDTO>(iExtractUnitRepository.GetByKey(SN));
         }
 
-        /// <summary>
-        /// 新增或保存抽取单元基本信息 不包含Schema模式和策略??
-        /// </summary>
-        /// <param name="eu">设置抽取单元新值</param>
-        public int SaveBaseInfo(ExtractUnit eu)
-        {
-            if (eu == null) return -1;// TODO: 替换标准错误代码
-            ExtractUnit euInDB = iExtractUnitRepository.GetByKey(eu.SN);
-
-            if (euInDB == null)
-            {
-                iExtractUnitRepository.Add(eu);
-            }
-            else
-            {
-                euInDB.SetBaseInfo(eu);
-                iExtractUnitRepository.Update(euInDB);
-            }
-            return iExtractUnitRepository.SaveChanges();
-        }
-
 
         /// <summary>
         /// 更新字段
         /// </summary>
         /// <param name="o"></param>
-        private void SetBaseInfo(ExtractUnit o)
+        public void SetBaseInfo(ExtractUnit o)
         {
             //this.UnintID = o.UnintID;// 主键ID
             this.SN = o.SN;// 单元序列

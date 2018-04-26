@@ -11,6 +11,14 @@ namespace DC.ETL.Domain.Model
     /// </summary>
     public partial class UnitRcd
     {
+        public UnitRcd()
+        {
 
+        }
+
+        public UnitRcd(int nErrorCode, ExtractUnit ex, EOptype eop)
+        {
+
+        }
     }
 }
