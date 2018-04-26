@@ -114,15 +114,12 @@
     <Compile Include="Service\ExtractUnitDomainService.cs" />
     <Compile Include="Service\IDataSourceDomainService.cs" />
     <Compile Include="Service\IExtractUnitDomainService.cs" />
-<<<<<<< HEAD
-=======
     <Compile Include="Service\ISchemaDomainService.cs" />
     <Compile Include="Service\IStrategyDomainService.cs" />
     <Compile Include="Service\ITaskDomainService.cs" />
     <Compile Include="Service\SchemaDomainService.cs" />
     <Compile Include="Service\StrategyDomainService.cs" />
     <Compile Include="Service\TaskDomainService.cs" />
->>>>>>> 863bcd15b1e55939ae11026e6f96519a9969f77d
     <Compile Include="Specifications\AnySpecification.cs" />
     <Compile Include="Specifications\ExpressionSpecification.cs" />
     <Compile Include="Specifications\ISpecification.cs" />
