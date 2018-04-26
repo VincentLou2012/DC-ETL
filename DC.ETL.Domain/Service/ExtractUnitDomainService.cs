@@ -56,9 +56,10 @@ namespace DC.ETL.Domain.Service
         /// 新增或保存抽取单元基本信息 不包含Schema模式和策略??
         /// </summary>
         /// <param name="eu">设置抽取单元新值</param>
-        public int SaveBaseInfo(ExtractUnit eu)
+        public int SaveBaseInfo(ExtractUnitDTO euDTO)
         {
-            if (eu == null) return -1;// TODO: 替换标准错误代码
+            if (euDTO == null) return -1;// TODO: 替换标准错误代码
+            ExtractUnit eu = AutoMapperUtils.MapTo<ExtractUnit>(euDTO);
             ExtractUnit euInDB = iExtractUnitRepository.GetByKey(eu.SN);
 
             EOptype eop = EOptype.Update;
