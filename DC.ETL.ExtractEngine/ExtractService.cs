@@ -7,22 +7,36 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
-
+using DC.ETL.Infrastructure.Container;
+using DC.ETL.Infrastructure.MSMQ;
 namespace DC.ETL.ExtractEngine
 {
-    public partial class Service1 : ServiceBase
+    public partial class ExtractService : ServiceBase
     {
-        public Service1()
+        public ExtractService()
         {
             InitializeComponent();
         }
 
         protected override void OnStart(string[] args)
         {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
 
         protected override void OnStop()
         {
+        }
+
+        private void InitializeComponent()
+        {
+            this.ServiceName = "DC-ETL-Engine";
         }
     }
 }
