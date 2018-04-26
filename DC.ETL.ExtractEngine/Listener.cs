@@ -29,9 +29,9 @@ namespace DC.ETL.ExtractEngine
 
         public void Listen()
         {
-            MSMQ Mq = new MSMQ();
+            EngineMQ Mq = new EngineMQ();
             Mq.MessageEvent += new MSMQ.MessageHandler(Dispatch);
-            Mq.StartEngineRcvListener();
+            Mq.StartListener();
         }
 
         public void Dispatch(Message msg)

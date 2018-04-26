@@ -96,7 +96,7 @@ namespace DC.ETL.Infrastructure.MSMQ
         /// <summary>
         /// 开始异步侦听队列
         /// </summary>
-        protected virtual void StartListener(MessageQueue msg)
+        public virtual void StartListener(MessageQueue msg)
         {
             msg.ReceiveCompleted += new ReceiveCompletedEventHandler(Mq_ReceiveCompleted);
             //异步方式，并发
