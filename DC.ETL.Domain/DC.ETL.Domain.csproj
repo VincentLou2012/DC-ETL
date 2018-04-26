@@ -105,8 +105,10 @@
     <Compile Include="IRepository\IUnitOfWorkRepositoryContext.cs" />
     <Compile Include="IRepository\SortOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\ExtractUnitSchemaService.cs" />
-    <Compile Include="Service\ExtractUnitStrategyService.cs" />
+    <Compile Include="Service\DataSourceDomainService.cs" />
+    <Compile Include="Service\ExtractUnitDomainService.cs" />
+    <Compile Include="Service\IDataSourceDomainService.cs" />
+    <Compile Include="Service\IExtractUnitDomainService.cs" />
     <Compile Include="Specifications\AnySpecification.cs" />
     <Compile Include="Specifications\ExpressionSpecification.cs" />
     <Compile Include="Specifications\ISpecification.cs" />
