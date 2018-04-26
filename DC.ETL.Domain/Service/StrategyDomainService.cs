@@ -3,18 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DC.ETL.Domain.Specifications;
+using System.Linq.Expressions;
+using DC.ETL.Domain.Model;
 using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
 using DC.ETL.Infrastructure.Utils;
 using DC.ETL.Models.DTO;
 
-namespace DC.ETL.Domain.Model
+namespace DC.ETL.Domain.Service
 {
-    /// <summary>
-    /// 操作记录
-    /// </summary>
-    public partial class OPRecord : AggregateRoot
+    public class StrategyDomainService : IStrategyDomainService
     {
+
+        #region 抽取策略
+        [Dependency]
+        private IStrategyRepository iStrategyRepository
+        {
+            get { return Container.Resolve<IStrategyRepository>("StrategyRepository"); }
+        }
+        #endregion 抽取策略
+
         #region 操作记录
         [Dependency]
         private IOPRecordRepository iOPRecordRepository
@@ -22,15 +31,6 @@ namespace DC.ETL.Domain.Model
             get { return Container.Resolve<IOPRecordRepository>("OPRecordRepository"); }
         }
         #endregion 操作记录
-        /// <summary>
-        /// 获取单个操作记录
-        /// </summary>
-        /// <returns></returns>
-        public OPRecordDTO Get(Guid SN) 
-        {
-            return AutoMapperUtils.MapTo<OPRecordDTO>(iOPRecordRepository.GetByKey(SN));
-        }
-
 
     }
 }

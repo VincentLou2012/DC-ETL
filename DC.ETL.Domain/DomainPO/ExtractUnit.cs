@@ -15,8 +15,6 @@ namespace DC.ETL.Domain.Model
         //主键ID
         [Key]
         public int UnintID { get; set; }
-        //单元序列
-        public System.Guid SN { get; set; }
         //模式id
         public int SchemaID { get; set; }
         //任务id

@@ -7,6 +7,8 @@ using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
 using DC.ETL.Domain.Specifications;
 using System.Linq.Expressions;
+using DC.ETL.Infrastructure.Utils;
+using DC.ETL.Models.DTO;
 
 namespace DC.ETL.Domain.Model
 {
@@ -27,18 +29,19 @@ namespace DC.ETL.Domain.Model
         /// 获取单个抽取策略
         /// </summary>
         /// <returns></returns>
-        public Strategy Get(Guid SN)
+        public StrategyDTO Get(Guid SN)
         {
-            return iStrategyRepository.GetByKey(SN);
+            return AutoMapperUtils.MapTo<StrategyDTO>(iStrategyRepository.GetByKey(SN));
         }
 
         /// <summary>
         /// 创建抽取策略基本信息
         /// </summary>
         /// <param name="strategy"></param>
-        public int SaveBaseInfo(Strategy stg)
+        public int SaveBaseInfo(StrategyDTO stgDTO)
         {
-            if (stg == null) return -1;// TODO: 替换标准错误代码
+            if (stgDTO == null) return -1;// TODO: 替换标准错误代码
+            Strategy stg = AutoMapperUtils.MapTo<Strategy>(stgDTO);
             Strategy stgInDB = iStrategyRepository.GetByKey(stg.SN);
 
             if (stgInDB == null)

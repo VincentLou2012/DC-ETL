@@ -14,8 +14,6 @@ namespace DC.ETL.Domain.Model
     {
         [Key]
         public int StrategyID { get; set; }
-        //策略序列
-        public System.Guid SN { get; set; }
         //策略类型,逻辑中枚举
         public Nullable<int> StrategyType { get; set; }
         //是否重复

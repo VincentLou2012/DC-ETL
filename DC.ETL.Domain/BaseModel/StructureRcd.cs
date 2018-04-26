@@ -11,6 +11,15 @@ namespace DC.ETL.Domain.Model
     /// </summary>
     public partial class StructureRcd
     {
+        public StructureRcd()
+        {
+
+        }
+
+        public StructureRcd(int nErrorCode, ExtractStructure ex, EOptype eop)
+        {
+
+        }
 
     }
 }

@@ -11,6 +11,14 @@ namespace DC.ETL.Domain.Model
     /// </summary>
     public partial class TaskRcd
     {
+        public TaskRcd()
+        {
 
+        }
+
+        public TaskRcd(int nErrorCode, Task ex, EOptype eop)
+        {
+
+        }
     }
 }

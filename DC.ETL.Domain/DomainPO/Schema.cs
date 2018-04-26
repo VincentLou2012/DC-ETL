@@ -14,8 +14,6 @@ namespace DC.ETL.Domain.Model
     {
         [Key]
         public int SchemaID { get; set; }
-        //模式序列
-        public System.Guid SN{ get; set; }
         //数据源id
         public int DSID { get; set; }
         //模式名

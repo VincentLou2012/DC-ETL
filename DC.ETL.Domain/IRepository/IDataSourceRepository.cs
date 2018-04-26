@@ -15,12 +15,6 @@ namespace DC.ETL.Domain
     /// </remarks>
     public interface IDataSourceRepository : IRepository<DataSource>
     {
-        /// <summary>
-        /// 获取指定数据源所有Schema模式
-        /// </summary>
-        /// <param name="SN"></param>
-        /// <returns></returns>
-        IEnumerable<Schema> GetSchema(Guid SN);
 
     }
 }
