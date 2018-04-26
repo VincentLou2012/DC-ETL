@@ -8,6 +8,7 @@ using System.Linq.Expressions;
 using DC.ETL.Domain.Model;
 using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
+using DC.ETL.Infrastructure.Utils;
 using DC.ETL.Models.DTO;
 
 namespace DC.ETL.Domain.Service
@@ -85,15 +86,27 @@ namespace DC.ETL.Domain.Service
         }
         /// <summary>
         /// 根据抽取模式的一些特征自动选取可能需要的模式并返回
-        /// TODO: 抽取模式的特征具体怎么计算还不清楚
         /// </summary>
         /// <returns>Schema模式</returns>
         public SchemaDTO AutoGetSchema(ExtractUnit extractUnit)
         {
-            Expression<Func<Schema, bool>> ex = t => t.Units. == extractUnit.TargetName;//TODO: lambda表达式有问题
+            // TODO: 抽取模式的特征具体怎么计算还不清楚 之后再确认
+            Expression<Func<ExtractUnit, bool>> ex = t => t.TargetName == extractUnit.TargetName;
 
-            Schema extractUnitInDB = iSchemaRepository.GetBySpecification(new ExpressionSpecification<Schema>(ex));
+            IEnumerable<ExtractUnit> ExtractUnits = iExtractUnitRepository.GetAll(new ExpressionSpecification<ExtractUnit>(ex));
 
+            Schema schemaInDB = null;
+            foreach (ExtractUnit item in ExtractUnits)
+            {
+                if (item.Schema != null)// 获取抽取单元中对应的模式
+                {
+                    schemaInDB = item.Schema;
+                    break;
+                }
+            }
+
+            return AutoMapperUtils.MapTo<SchemaDTO>(schemaInDB);
         }
+
     }
 }
