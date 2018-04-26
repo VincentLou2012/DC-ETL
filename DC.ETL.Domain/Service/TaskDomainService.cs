@@ -25,6 +25,42 @@ namespace DC.ETL.Domain.Service
         }
         #endregion 任务
 
+        #region 操作记录
+        [Dependency]
+        private IOPRecordRepository iOPRecordRepository
+        {
+            get { return Container.Resolve<IOPRecordRepository>("OPRecordRepository"); }
+        }
+        #endregion 操作记录
 
+        /// <summary>
+        /// 创建任务基本信息
+        /// </summary>
+        /// <param name="task"></param>
+        public int SaveBaseInfo(TaskDTO taskDTO)
+        {
+            if (taskDTO == null) return -1;// TODO: 替换标准错误代码
+            Task task = AutoMapperUtils.MapTo<Task>(taskDTO);
+            Task taskInDB = iTaskRepository.GetByKey(task.SN);
+
+            EOptype eop = EOptype.Update;
+            if (taskInDB == null)
+            {
+                eop = EOptype.Add;
+                iTaskRepository.Add(task);
+            }
+            else
+            {
+                taskInDB.SetBaseInfo(task);
+                iTaskRepository.Update(taskInDB);
+            }
+            int nRet = iTaskRepository.SaveChanges();
+
+            // 新增操作记录
+            TaskRcd taskRcd = new TaskRcd(nRet, taskInDB, eop);
+            iOPRecordRepository.Add(taskRcd);
+            int nOpRet = iOPRecordRepository.SaveChanges();
+            return nRet;
+        }
     }
 }

@@ -114,7 +114,11 @@
     <Compile Include="Service\ExtractUnitDomainService.cs" />
     <Compile Include="Service\IDataSourceDomainService.cs" />
     <Compile Include="Service\IExtractUnitDomainService.cs" />
+    <Compile Include="Service\ISchemaDomainService.cs" />
+    <Compile Include="Service\IStrategyDomainService.cs" />
     <Compile Include="Service\ITaskDomainService.cs" />
+    <Compile Include="Service\SchemaDomainService.cs" />
+    <Compile Include="Service\StrategyDomainService.cs" />
     <Compile Include="Service\TaskDomainService.cs" />
     <Compile Include="Specifications\AnySpecification.cs" />
     <Compile Include="Specifications\ExpressionSpecification.cs" />

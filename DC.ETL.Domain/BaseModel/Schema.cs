@@ -34,47 +34,15 @@ namespace DC.ETL.Domain.Model
         }
 
         /// <summary>
-        /// 新增和更新存储模式信息和完整结构
-        /// </summary>
-        /// <param name="schema"></param>
-        /// <returns></returns>
-        public int Save(Schema schema, ICollection<WholeStructure> wholeStructures)
-        {
-            if (schema == null) return -1;// TODO: 替换标准错误代码
-            Schema schemaInDB = iSchemaRepository.GetByKey(schema.SN);
-
-            if (schemaInDB == null)
-            {
-                schema.AStructure = wholeStructures;
-                iSchemaRepository.Add(schema);
-            }
-            else
-            {
-                schemaInDB.SetBaseInfo(schema);
-                iSchemaRepository.Update(schemaInDB);
-                iSchemaRepository.UpdateWholeStructure(schemaInDB, wholeStructures);
-            }
-            return iSchemaRepository.SaveChanges();
-        }
-        /// <summary>
         /// 获取抽取模式结构
         /// </summary>
         /// <param name="SN"></param>
         /// <returns></returns>
-        public ExtractStructure GetExtractStructure(Guid SN)
+        public ExtractStructureDTO GetExtractStructure(Guid SN)
         {
-            return iSchemaRepository.GetExtractStructure(SN);
+            return AutoMapperUtils.MapTo<ExtractStructureDTO>(iSchemaRepository.GetExtractStructure(SN));
         }
-        /// <summary>
-        /// 保存抽取模式结构
-        /// </summary>
-        /// <param name="extractStructure"></param>
-        /// <returns></returns>
-        public int SaveExtractStructure(ExtractStructure extractStructure)
-        {
-            iSchemaRepository.UpdateExtractStructure(extractStructure);
-            return iSchemaRepository.SaveChanges();
-        }
+
 
         ///// <summary>
         ///// 检查抽取结构GUID值
@@ -100,7 +68,7 @@ namespace DC.ETL.Domain.Model
         /// 更新字段
         /// </summary>
         /// <param name="o"></param>
-        private void SetBaseInfo(Schema o)
+        public void SetBaseInfo(Schema o)
         {
             //this.SchemaID = o.SchemaID;// 	模式ID
             this.SN = o.SN;// 	模式序列

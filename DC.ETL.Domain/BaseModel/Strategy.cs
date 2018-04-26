@@ -38,9 +38,10 @@ namespace DC.ETL.Domain.Model
         /// 创建抽取策略基本信息
         /// </summary>
         /// <param name="strategy"></param>
-        public int SaveBaseInfo(Strategy stg)
+        public int SaveBaseInfo(StrategyDTO stgDTO)
         {
-            if (stg == null) return -1;// TODO: 替换标准错误代码
+            if (stgDTO == null) return -1;// TODO: 替换标准错误代码
+            Strategy stg = AutoMapperUtils.MapTo<Strategy>(stgDTO);
             Strategy stgInDB = iStrategyRepository.GetByKey(stg.SN);
 
             if (stgInDB == null)

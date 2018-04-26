@@ -11,6 +11,14 @@ namespace DC.ETL.Domain.Model
     /// </summary>
     public partial class SchemaRcd
     {
+        public SchemaRcd()
+        {
 
+        }
+
+        public SchemaRcd(int nErrorCode, Schema ex, EOptype eop)
+        {
+
+        }
     }
 }

@@ -58,9 +58,10 @@ namespace DC.ETL.Domain.Service
         /// 保存数据源基本信息
         /// </summary>
         /// <returns>Schema模式集合</returns>
-        public int SaveBaseInfo(DataSource eu)
+        public int SaveBaseInfo(DataSourceDTO euDTO)
         {
-            if (eu == null) return -1;// TODO: 替换标准错误代码
+            if (euDTO == null) return -1;// TODO: 替换标准错误代码
+            DataSource eu = AutoMapperUtils.MapTo<DataSource>(euDTO);
             DataSource euInDB = iDataSourceRepository.GetByKey(eu.SN);
 
             EOptype eop = EOptype.Update;

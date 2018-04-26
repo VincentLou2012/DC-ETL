@@ -75,32 +75,13 @@ namespace DC.ETL.Domain.Model
             }
             return b;
         }
-        /// <summary>
-        /// 创建任务基本信息
-        /// </summary>
-        /// <param name="task"></param>
-        public int SaveBaseInfo(Task eu)
-        {
-            if (eu == null) return -1;// TODO: 替换标准错误代码
-            Task euInDB = iTaskRepository.GetByKey(eu.SN);
-
-            if (euInDB == null)
-            {
-                iTaskRepository.Add(eu);
-            }
-            else
-            {
-                euInDB.SetBaseInfo(eu);
-                iTaskRepository.Update(euInDB);
-            }
-            return iTaskRepository.SaveChanges();
-        }
+        
 
         /// <summary>
         /// 更新字段
         /// </summary>
         /// <param name="o"></param>
-        private void SetBaseInfo(Task o)
+        public void SetBaseInfo(Task o)
         {
             //this.TaskID = o.TaskID;// 	任务ID
             this.SN = o.SN;// 	任务序列

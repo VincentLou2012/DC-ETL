@@ -128,10 +128,11 @@ namespace DC.ETL.Domain.Service
         /// 根据抽取模式的一些特征自动选取可能需要的模式并返回
         /// </summary>
         /// <returns>Schema模式</returns>
-        public SchemaDTO AutoGetSchema(ExtractUnit extractUnit)
+        public SchemaDTO AutoGetSchema(ExtractUnitDTO euDTO)
         {
+            if (euDTO == null) return null;
             // TODO: 抽取模式的特征具体怎么计算还不清楚 之后再确认
-            Expression<Func<ExtractUnit, bool>> ex = t => t.TargetName == extractUnit.TargetName;
+            Expression<Func<ExtractUnit, bool>> ex = t => t.TargetName == euDTO.TargetName;
 
             IEnumerable<ExtractUnit> ExtractUnits = iExtractUnitRepository.GetAll(new ExpressionSpecification<ExtractUnit>(ex));
 
