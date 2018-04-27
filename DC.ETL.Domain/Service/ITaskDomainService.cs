@@ -7,6 +7,9 @@ using DC.ETL.Models.DTO;
 
 namespace DC.ETL.Domain.Service
 {
+    /// <summary>
+    /// 任务领域服务接口
+    /// </summary>
     public interface ITaskDomainService
     {
         /// <summary>
