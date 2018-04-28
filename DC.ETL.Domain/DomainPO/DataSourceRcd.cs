@@ -8,7 +8,7 @@ namespace DC.ETL.Domain
 {
     public partial class DataSourceRcd : OPRecord
     {
-        public int DSID { get; set; }
+        public Guid DSSN{ get; set; }
         public virtual DataSource _theDS { get; set; }
     }
 }

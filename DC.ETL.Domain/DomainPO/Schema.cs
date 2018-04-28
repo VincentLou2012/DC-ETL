@@ -13,7 +13,7 @@ namespace DC.ETL.Domain
     public partial class Schema
     {
         [Key]
-        public int SchemaID { get; set; }
+        public Guid SN{ get; set; }
         //数据源id
         public int DSID { get; set; }
         //模式名
@@ -26,8 +26,6 @@ namespace DC.ETL.Domain
         public string Comments { get; set; }
         //所属数据源
         public virtual DataSource Source { get; set; }
-        //操作记录
-        public virtual ICollection<SchemaRcd> Records { get; set; }
         //抽取表结构
         public virtual ICollection<Structure> EStructure { get; set; }
         //对应抽取单元集合，原则上一个结构对应一个抽取单元

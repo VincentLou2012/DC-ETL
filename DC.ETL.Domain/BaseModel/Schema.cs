@@ -15,7 +15,7 @@ namespace DC.ETL.Domain
     /// <summary>
     /// 数据模式
     /// </summary>
-    public partial class Schema : AggregateRoot
+    public partial class Schema : IEntity
     {
         #region 数据模式
         [Dependency]

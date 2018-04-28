@@ -30,13 +30,6 @@ namespace DC.ETL.Domain.Service
         }
         #endregion 数据模式
 
-        #region 操作记录
-        [Dependency]
-        private IOPRecordRepository iOPRecordRepository
-        {
-            get { return Container.Resolve<IOPRecordRepository>("OPRecordRepository"); }
-        }
-        #endregion 操作记录
         /// <summary>
         /// 从业务平台获取指定数据源所有Schema模式 并存储获取的模式
         /// </summary>
@@ -76,11 +69,6 @@ namespace DC.ETL.Domain.Service
             }
             int nRet = iDataSourceRepository.SaveChanges();
 
-            // 新增操作记录
-            DataSourceRcd dsRcd = new DataSourceRcd(nRet, euInDB, eop);
-            iOPRecordRepository.Add(dsRcd);
-            int nOpRet = iOPRecordRepository.SaveChanges();
-            return nRet;
         }
 
         // TODO: 数据源验证

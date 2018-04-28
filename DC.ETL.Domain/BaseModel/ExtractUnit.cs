@@ -15,7 +15,7 @@ namespace DC.ETL.Domain
     /// <summary>
     /// 抽取单元
     /// </summary>
-    public partial class ExtractUnit : AggregateRoot
+    public partial class ExtractUnit : IEntity
     {
 
         #region 抽取单元
@@ -40,12 +40,12 @@ namespace DC.ETL.Domain
         /// 更新字段
         /// </summary>
         /// <param name="o"></param>
-        public void SetBaseInfo(ExtractUnit o)
+        public void SetBaseInfo(ExtractUnitDTO o)
         {
             //this.UnintID = o.UnintID;// 主键ID
             this.SN = o.SN;// 单元序列
-            this.SchemaID = o.SchemaID;// 模式id
-            this.TaskID = o.TaskID;// 任务id
+            this.SchemaSN = o.SchemaSN;// 模式id
+            this.TaskSN= o.TaskSN;// 任务id
             this.DataRows = o.DataRows;// 行数
             this.TargetName = o.TargetName;// 目标名称
             this.MethodName = o.MethodName;// 定义方法名称

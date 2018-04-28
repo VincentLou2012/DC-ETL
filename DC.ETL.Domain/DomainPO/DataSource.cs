@@ -12,8 +12,6 @@ namespace DC.ETL.Domain
     /// </summary>
     public partial class DataSource
     {
-        [Key]
-        public int DSID { get; set; }
         //数据源名称
         public string DSName { get; set; }
         //数据源类型

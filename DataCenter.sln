@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.ETL.Infrastructure", "DC.ETL.Infrastructure\DC.ETL.Infrastructure.csproj", "{B5859FF2-B448-4BFB-A52E-5C2DDF9798C5}"
 EndProject
@@ -10,12 +10,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DC.ETL.Models", "DC.ETL.Models", "{B4F76208-1E9B-408C-9664-435B6D046D9A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.ETL.Domain", "DC.ETL.Domain\DC.ETL.Domain.csproj", "{6DFE99D3-7183-485B-B67A-EAD3EDCAA59F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DC.ETL.Service", "DC.ETL.Service", "{EB6C9ADC-16D2-439F-A6FA-0A057832CAB8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.ETL.Service.Business", "DC.ETL.Service.Business\DC.ETL.Service.Business.csproj", "{911E1011-D227-4F49-9CD9-723C6599B242}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.ETL.Service.Provider", "DC.ETL.Service.Provider\DC.ETL.Service.Provider.csproj", "{EEEDD087-DB2A-4891-9C33-63A3967B92EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.ETL.Models.DTO", "DC.ETL.Models.DTO\DC.ETL.Models.DTO.csproj", "{1B4F7645-5E54-44A5-ACC0-2CA3E40AEA27}"
 EndProject
@@ -26,6 +20,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.ETL.ExtractEngine", "DC.ETL.ExtractEngine\DC.ETL.ExtractEngine.csproj", "{2C56A960-384C-4ADF-A457-6895DCF4F915}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.ETL.Infrastructure.Test", "DC.ETL.Infrastructure.Test\DC.ETL.Infrastructure.Test.csproj", "{62E58E46-146B-4655-8DAA-09A2DAC70B8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.ETL.ApplicationService", "DC.ETL.ApplicationService\DC.ETL.ApplicationService.csproj", "{C6765F22-9D11-495F-966C-745C076D9976}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.ETL.Events", "DC.ETL.Events\DC.ETL.Events.csproj", "{544B8B94-43E6-484F-B8C5-212F09750EE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,14 +43,6 @@ Global
 		{6DFE99D3-7183-485B-B67A-EAD3EDCAA59F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DFE99D3-7183-485B-B67A-EAD3EDCAA59F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DFE99D3-7183-485B-B67A-EAD3EDCAA59F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{911E1011-D227-4F49-9CD9-723C6599B242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{911E1011-D227-4F49-9CD9-723C6599B242}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{911E1011-D227-4F49-9CD9-723C6599B242}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{911E1011-D227-4F49-9CD9-723C6599B242}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EEEDD087-DB2A-4891-9C33-63A3967B92EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEEDD087-DB2A-4891-9C33-63A3967B92EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EEEDD087-DB2A-4891-9C33-63A3967B92EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EEEDD087-DB2A-4891-9C33-63A3967B92EF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1B4F7645-5E54-44A5-ACC0-2CA3E40AEA27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1B4F7645-5E54-44A5-ACC0-2CA3E40AEA27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B4F7645-5E54-44A5-ACC0-2CA3E40AEA27}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,14 +59,20 @@ Global
 		{62E58E46-146B-4655-8DAA-09A2DAC70B8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62E58E46-146B-4655-8DAA-09A2DAC70B8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62E58E46-146B-4655-8DAA-09A2DAC70B8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6765F22-9D11-495F-966C-745C076D9976}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6765F22-9D11-495F-966C-745C076D9976}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6765F22-9D11-495F-966C-745C076D9976}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6765F22-9D11-495F-966C-745C076D9976}.Release|Any CPU.Build.0 = Release|Any CPU
+		{544B8B94-43E6-484F-B8C5-212F09750EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{544B8B94-43E6-484F-B8C5-212F09750EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{544B8B94-43E6-484F-B8C5-212F09750EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{544B8B94-43E6-484F-B8C5-212F09750EE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1B4F7645-5E54-44A5-ACC0-2CA3E40AEA27} = {B4F76208-1E9B-408C-9664-435B6D046D9A}
-		{911E1011-D227-4F49-9CD9-723C6599B242} = {EB6C9ADC-16D2-439F-A6FA-0A057832CAB8}
-		{EEEDD087-DB2A-4891-9C33-63A3967B92EF} = {EB6C9ADC-16D2-439F-A6FA-0A057832CAB8}
 		{B95C1BFF-68F6-4BFB-842B-6D2FB7C9AA20} = {BF85825F-D9AA-4463-A426-1BBD4891D109}
 		{2C56A960-384C-4ADF-A457-6895DCF4F915} = {BF85825F-D9AA-4463-A426-1BBD4891D109}
 	EndGlobalSection

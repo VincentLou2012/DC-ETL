@@ -11,13 +11,12 @@ namespace DC.ETL.Models.DTO
     /// </summary>
     public class ExtractUnitDTO
     {
-        public int UnintID { get; set; }
         //单元序列
         public System.Guid SN { get; set; }
         //模式id
-        public int SchemaID { get; set; }
+        public Guid SchemaSN { get; set; }
         //任务id
-        public int TaskID { get; set; }
+        public Guid TaskSN { get; set; }
         //行数
         public Nullable<int> DataRows { get; set; }
         //目标名称

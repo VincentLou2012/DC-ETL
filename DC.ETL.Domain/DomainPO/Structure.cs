@@ -13,11 +13,10 @@ namespace DC.ETL.Domain
     public partial class Structure
     {
         [Key]
-        public int StructureID { get; set; }
         //序列标识
         public System.Guid SN { get; set; }
         //数据模式id
-        public int SchemaID { get; set; }
+        public Guid SchemaSN { get; set; }
         //字段名称
         public string FieldName { get; set; }
         //字段显示名称
@@ -34,8 +33,6 @@ namespace DC.ETL.Domain
         public string Describe { get; set; }
         //相关备注
         public string Comments { get; set; }
-        //操作记录
-        public virtual ICollection<StructureRcd> Records { get; set; }
         //所属模式
         public virtual Schema _Schema { get; set; }
 

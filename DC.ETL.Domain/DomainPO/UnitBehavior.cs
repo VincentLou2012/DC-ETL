@@ -10,6 +10,8 @@ namespace DC.ETL.Domain
     {
         //发生时间
         public DateTime Time { get; set; }
+        //单元序列
+        public Guid UnitSN { get; set; }
         //结果
         public string Result { get; set; }
         //影响行数

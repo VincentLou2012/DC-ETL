@@ -12,8 +12,6 @@ namespace DC.ETL.Domain
     /// </summary>
     public partial class Task
     {
-        [Key]
-        public int TaskID { get; set; }
         //任务名称
         public string Name { get; set; }
         //任务描述

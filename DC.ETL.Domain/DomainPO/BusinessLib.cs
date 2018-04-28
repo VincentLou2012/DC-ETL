@@ -8,9 +8,6 @@ namespace DC.ETL.Domain
 {
     public partial class BusinessLib
     {
-        [Key]
-        public Guid ID { get; set; }
-
         public string Name { get; set; }
 
         public string Aspect { get; set; }
