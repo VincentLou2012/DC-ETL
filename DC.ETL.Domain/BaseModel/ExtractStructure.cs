@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using DC.ETL.Infrastructure.Utils;
 using DC.ETL.Models.DTO;
 
-namespace DC.ETL.Domain.Model
+namespace DC.ETL.Domain
 {
     /// <summary>
     /// 抽取数据结构
     /// </summary>
-    public partial class ExtractStructure : IEntity
+    public partial class Structure : IEntity
     {
 
     }

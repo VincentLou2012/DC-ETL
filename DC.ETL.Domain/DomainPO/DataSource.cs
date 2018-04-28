@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DC.ETL.Domain.Model
+namespace DC.ETL.Domain
 {
     /// <summary>
     /// 数据源
@@ -35,7 +35,7 @@ namespace DC.ETL.Domain.Model
         //账户用户名
         public string UserName { get; set; }
         //是否是输出目标数据源
-        public int IsTarget { get; set; }
+        public int RoleType { get; set; }
         //账户密码
         public string UserPassword { get; set; }
         //数据源关键词(预留)

@@ -74,7 +74,7 @@ namespace DC.ETL.Domain.Service
         public int SaveExtractStructure(ExtractStructureDTO exDTO)
         {
             if (exDTO == null) return -1;// TODO: 替换标准错误代码
-            ExtractStructure extractStructure = AutoMapperUtils.MapTo<ExtractStructure>(exDTO);
+            Structure extractStructure = AutoMapperUtils.MapTo<Structure>(exDTO);
             iSchemaRepository.UpdateExtractStructure(extractStructure);
             EOptype eop = EOptype.Update;
 

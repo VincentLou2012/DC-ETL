@@ -32,12 +32,12 @@ namespace DC.ETL.Domain
         /// </summary>
         /// <param name="SN"></param>
         /// <returns></returns>
-        ExtractStructure GetExtractStructure(Guid SN);
+        Structure GetExtractStructure(Guid SN);
         /// <summary>
         /// 插入或更新抽取模式结构
         /// </summary>
         /// <param name="extractStructure"></param>
         /// <returns></returns>
-        void UpdateExtractStructure(ExtractStructure extractStructure);
+        void UpdateExtractStructure(Structure extractStructure);
     }
 }

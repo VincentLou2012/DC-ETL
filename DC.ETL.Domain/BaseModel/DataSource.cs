@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 using DC.ETL.Infrastructure.Utils;
 using DC.ETL.Models.DTO;
 
-namespace DC.ETL.Domain.Model
+namespace DC.ETL.Domain
 {
     /// <summary>
     /// 数据源
@@ -63,7 +63,7 @@ namespace DC.ETL.Domain.Model
             this.SysLanguage = o.SysLanguage;// 系统语言
             this.ConnectionParams = o.ConnectionParams;// 连接参数
             this.UserName = o.UserName;// 账户用户名
-            this.IsTarget = o.IsTarget;// 是否是输出目标数据源
+            this.RoleType = o.RoleType;// 是否是输出目标数据源
             this.UserPassword = o.UserPassword;// 账户密码
             this.Keyword = o.Keyword;// 数据源关键词(预留)
             this.Aspect = o.Aspect;// 数据源方面(预留)

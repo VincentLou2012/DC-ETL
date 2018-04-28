@@ -54,9 +54,9 @@ namespace DC.ETL.Repository.EFRepository
         /// </summary>
         /// <param name="SN"></param>
         /// <returns></returns>
-        public ExtractStructure GetExtractStructure(Guid SN)
+        public Structure GetExtractStructure(Guid SN)
         {
-            DbSet<ExtractStructure> dsExtractStructure = ((EFDbContext)EfContext.EFContext).ExtractStructures;
+            DbSet<Structure> dsExtractStructure = ((EFDbContext)EfContext.EFContext).ExtractStructures;
             return dsExtractStructure.FirstOrDefault(p=>p.SN == SN);
         }
         /// <summary>
@@ -64,12 +64,12 @@ namespace DC.ETL.Repository.EFRepository
         /// </summary>
         /// <param name="extractStructure"></param>
         /// <returns></returns>
-        public void UpdateExtractStructure(ExtractStructure extractStructure)
+        public void UpdateExtractStructure(Structure extractStructure)
         {
             Guid SN = extractStructure.SN;
             EFDbContext context = (EFDbContext)EfContext.EFContext;
-            DbSet<ExtractStructure> dsExtractStructure = context.ExtractStructures;
-            ExtractStructure extractStructureInDB = dsExtractStructure.FirstOrDefault(p => p.SN == SN);
+            DbSet<Structure> dsExtractStructure = context.ExtractStructures;
+            Structure extractStructureInDB = dsExtractStructure.FirstOrDefault(p => p.SN == SN);
             if (extractStructureInDB != null)
                 context.Entry(extractStructure).State = EntityState.Modified;
             else

@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 using DC.ETL.Infrastructure.Utils;
 using DC.ETL.Models.DTO;
 
-namespace DC.ETL.Domain.Model
+namespace DC.ETL.Domain
 {
     /// <summary>
     /// 数据模式

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DC.ETL.Domain.Model
+namespace DC.ETL.Domain
 {
     /// <summary>
     /// 数据模式
@@ -28,10 +28,8 @@ namespace DC.ETL.Domain.Model
         public virtual DataSource Source { get; set; }
         //操作记录
         public virtual ICollection<SchemaRcd> Records { get; set; }
-        //全表结构
-        public virtual ICollection<WholeStructure> AStructure { get; set; }
         //抽取表结构
-        public virtual ICollection<ExtractStructure> EStructure { get; set; }
+        public virtual ICollection<Structure> EStructure { get; set; }
         //对应抽取单元集合，原则上一个结构对应一个抽取单元
         public virtual ICollection<ExtractUnit> Units { get; set; }
     }

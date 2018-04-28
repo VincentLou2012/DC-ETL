@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DC.ETL.Domain.Model
+namespace DC.ETL.Domain
 {
     public partial class SchemaRcd : OPRecord
     {
