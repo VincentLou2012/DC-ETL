@@ -19,7 +19,7 @@ namespace DC.ETL.Domain.Model
     {
 
         #region 抽取策略
-        [Dependency]
+        
         private IStrategyRepository iStrategyRepository
         {
             get { return Container.Resolve<IStrategyRepository>("StrategyRepository"); }

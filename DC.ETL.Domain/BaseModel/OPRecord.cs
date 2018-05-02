@@ -16,7 +16,7 @@ namespace DC.ETL.Domain.Model
     public partial class OPRecord : AggregateRoot
     {
         #region 操作记录
-        [Dependency]
+        
         private IOPRecordRepository iOPRecordRepository
         {
             get { return Container.Resolve<IOPRecordRepository>("OPRecordRepository"); }

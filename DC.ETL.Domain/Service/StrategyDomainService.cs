@@ -17,7 +17,7 @@ namespace DC.ETL.Domain.Service
     {
 
         #region 抽取策略
-        [Dependency]
+        
         private IStrategyRepository iStrategyRepository
         {
             get { return Container.Resolve<IStrategyRepository>("StrategyRepository"); }
@@ -25,7 +25,7 @@ namespace DC.ETL.Domain.Service
         #endregion 抽取策略
 
         #region 操作记录
-        [Dependency]
+        
         private IOPRecordRepository iOPRecordRepository
         {
             get { return Container.Resolve<IOPRecordRepository>("OPRecordRepository"); }

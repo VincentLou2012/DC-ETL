@@ -19,7 +19,7 @@ namespace DC.ETL.Domain.Model
     {
 
         #region 抽取单元
-        [Dependency]
+        
         private IExtractUnitRepository iExtractUnitRepository
         {
             get { return Container.Resolve<IExtractUnitRepository>("ExtractUnitRepository"); }

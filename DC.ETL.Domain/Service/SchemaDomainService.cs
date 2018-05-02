@@ -16,7 +16,7 @@ namespace DC.ETL.Domain.Service
     public class SchemaDomainService : ISchemaDomainService
     {
         #region 数据模式
-        [Dependency]
+        
         private ISchemaRepository iSchemaRepository
         {
             get { return Container.Resolve<ISchemaRepository>("SchemaRepository"); }
@@ -24,7 +24,7 @@ namespace DC.ETL.Domain.Service
         #endregion 数据模式
 
         #region 操作记录
-        [Dependency]
+        
         private IOPRecordRepository iOPRecordRepository
         {
             get { return Container.Resolve<IOPRecordRepository>("OPRecordRepository"); }

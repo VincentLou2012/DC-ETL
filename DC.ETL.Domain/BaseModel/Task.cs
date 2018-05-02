@@ -18,7 +18,7 @@ namespace DC.ETL.Domain.Model
     public partial class Task : AggregateRoot
     {
         #region 任务
-        [Dependency]
+        
         private ITaskRepository iTaskRepository
         {
             get { return Container.Resolve<ITaskRepository>("TaskRepository"); }

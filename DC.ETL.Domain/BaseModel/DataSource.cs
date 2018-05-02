@@ -19,7 +19,7 @@ namespace DC.ETL.Domain.Model
     {
 
         #region 数据源
-        [Dependency]
+        
         private IDataSourceRepository iDataSourceRepository
         {
             get { return Container.Resolve<IDataSourceRepository>("DataSourceRepository"); }

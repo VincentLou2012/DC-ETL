@@ -18,7 +18,7 @@ namespace DC.ETL.Domain.Service
     public class TaskDomainService : ITaskDomainService
     {
         #region 任务
-        [Dependency]
+        
         private ITaskRepository iTaskRepository
         {
             get { return Container.Resolve<ITaskRepository>("TaskRepository"); }
@@ -26,7 +26,7 @@ namespace DC.ETL.Domain.Service
         #endregion 任务
 
         #region 操作记录
-        [Dependency]
+        
         private IOPRecordRepository iOPRecordRepository
         {
             get { return Container.Resolve<IOPRecordRepository>("OPRecordRepository"); }

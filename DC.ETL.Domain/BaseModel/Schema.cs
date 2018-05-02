@@ -18,7 +18,7 @@ namespace DC.ETL.Domain.Model
     public partial class Schema : AggregateRoot
     {
         #region 数据模式
-        [Dependency]
+        
         private ISchemaRepository iSchemaRepository
         {
             get { return Container.Resolve<ISchemaRepository>("SchemaRepository"); }

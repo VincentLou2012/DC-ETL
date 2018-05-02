@@ -20,7 +20,7 @@ namespace DC.ETL.Domain.Service
     {
 
         #region 抽取单元
-        [Dependency]
+        
         private IExtractUnitRepository iExtractUnitRepository
         {
             get { return Container.Resolve<IExtractUnitRepository>("ExtractUnitRepository"); }
@@ -28,7 +28,7 @@ namespace DC.ETL.Domain.Service
         #endregion 抽取单元
 
         #region 数据模式
-        [Dependency]
+        
         private ISchemaRepository iSchemaRepository
         {
             get { return Container.Resolve<ISchemaRepository>("SchemaRepository"); }
@@ -36,7 +36,7 @@ namespace DC.ETL.Domain.Service
         #endregion 数据模式
 
         #region 抽取策略
-        [Dependency]
+        
         private IStrategyRepository iStrategyRepository
         {
             get { return Container.Resolve<IStrategyRepository>("StrategyRepository"); }
@@ -44,7 +44,7 @@ namespace DC.ETL.Domain.Service
         #endregion 抽取策略
 
         #region 操作记录
-        [Dependency]
+        
         private IOPRecordRepository iOPRecordRepository
         {
             get { return Container.Resolve<IOPRecordRepository>("OPRecordRepository"); }
