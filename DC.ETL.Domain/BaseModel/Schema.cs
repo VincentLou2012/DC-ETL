@@ -38,9 +38,9 @@ namespace DC.ETL.Domain.Model
         /// </summary>
         /// <param name="SN"></param>
         /// <returns></returns>
-        public ExtractStructureDTO GetExtractStructure(Guid SN)
+        public ExtractStructureDTO GetExtractStructure(Guid SNExtractStructure)
         {
-            return AutoMapperUtils.MapTo<ExtractStructureDTO>(iSchemaRepository.GetExtractStructure(SN));
+            return AutoMapperUtils.MapTo<ExtractStructureDTO>(iSchemaRepository.GetExtractStructure(SNExtractStructure));
         }
 
 
