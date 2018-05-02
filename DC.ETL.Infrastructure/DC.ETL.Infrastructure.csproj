@@ -58,6 +58,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NServiceBus.Core, Version=6.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NServiceBus.6.4.3\lib\net452\NServiceBus.Core.dll</HintPath>
+    </Reference>
     <Reference Include="sapnco, Version=3.0.0.42, Culture=neutral, PublicKeyToken=50436dca5c7f7d23, processorArchitecture=AMD64">
       <HintPath>..\packages\sapnco3.x64.3.0.2.0\lib\sapnco.dll</HintPath>
     </Reference>
@@ -101,11 +104,13 @@
     <Compile Include="DataHandler\Reader\Clients\SAP\RFC\RfcManager.cs" />
     <Compile Include="DataHandler\Reader\Clients\SAP\RFC\RfcParam.cs" />
     <Compile Include="DisposableResource.cs" />
-    <Compile Include="MSMQ\EngineMQ.cs" />
-    <Compile Include="MSMQ\JobMQ.cs" />
-    <Compile Include="MSMQ\ManageMQ.cs" />
-    <Compile Include="MSMQ\Messages.cs" />
-    <Compile Include="MSMQ\MSMQ.cs" />
+    <Compile Include="MQ\MSMQ\EngineMQ.cs" />
+    <Compile Include="MQ\MSMQ\JobMQ.cs" />
+    <Compile Include="MQ\MSMQ\ManageMQ.cs" />
+    <Compile Include="MQ\MSMQ\Messages.cs" />
+    <Compile Include="MQ\MSMQ\MSMQ.cs" />
+    <Compile Include="MQ\NServiceBus\Messages.cs" />
+    <Compile Include="MQ\NServiceBus\NServiceBusUtils.cs" />
     <Compile Include="PagedResult.cs" />
     <Compile Include="Log\LibLog\LibLog.4.2\LibLog.cs" />
     <Compile Include="Log\LibLog\LogExtensions.cs" />

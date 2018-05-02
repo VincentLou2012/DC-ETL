@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Messaging;
 
-namespace DC.ETL.Infrastructure.MSMQ
+namespace DC.ETL.Infrastructure.MQ.MSMQ
 {
     public class EngineMQ : MSMQ
     {

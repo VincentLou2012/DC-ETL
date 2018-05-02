@@ -6,7 +6,7 @@ using System.Messaging;
 using System.Threading;
 using System.Configuration;
 
-namespace DC.ETL.Infrastructure.MSMQ
+namespace DC.ETL.Infrastructure.MQ.MSMQ
 {
     /// <summary>
     /// 消息通道

@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NServiceBus;
 
-namespace DC.ETL.Infrastructure.MSMQ
+namespace DC.ETL.Infrastructure.MQ.NServiceBus
 {
     /// <summary>
-    /// 消息格式
+    /// 管理系统发送到抽取引擎命令
     /// </summary>
-    [Serializable]
-    public class JobMessage
+    public class JobCommand : ICommand
     {
         public Guid MsqSN { get; set; }
         public Guid TaskSN { get; set; }
@@ -36,5 +32,15 @@ namespace DC.ETL.Infrastructure.MSMQ
         Disabled = 2,
         Failed = 3,
         CreateFailed = 4
+    }
+    /// <summary>
+    /// 抽取引擎建立新作业
+    /// </summary>
+    public class JobMessage : ICommand
+    {
+        public Guid MsqSN { get; set; }
+        public Guid TaskSN { get; set; }
+        
+        public DateTime SendDate { get; set; }
     }
 }
