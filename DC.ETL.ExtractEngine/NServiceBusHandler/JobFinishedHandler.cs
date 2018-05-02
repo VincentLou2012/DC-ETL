@@ -15,9 +15,10 @@ namespace DC.ETL.ExtractEngine.NServiceBus
     public class JobFinishedHandler :
         IHandleMessages<JobFinished>
     {
-        public Task Handle(JobFinished message, IMessageHandlerContext context)
+        public async Task Handle(JobFinished message, IMessageHandlerContext context)
         {
-            throw new NotImplementedException();
+            
+
         }
     }
 }

@@ -3,6 +3,63 @@ using NServiceBus;
 
 namespace DC.ETL.Infrastructure.MQ.NServiceBus
 {
+
+
+    /// <summary>
+    /// 任务添加
+    /// </summary>
+    public class JobAdd : JobCommand, ICommand
+    {
+        public JobAdd()
+        {
+            this.OperateFlag = JobOperation.ADD;
+        }
+    }
+
+    /// <summary>
+    /// 任务停止
+    /// </summary>
+    public class JobStop : JobCommand, ICommand
+    {
+        public JobStop()
+        {
+            this.OperateFlag = JobOperation.STOP;
+        }
+    }
+
+    /// <summary>
+    /// 任务重置
+    /// </summary>
+    public class JobReset : JobCommand, ICommand
+    {
+        public JobReset()
+        {
+            this.OperateFlag = JobOperation.RESET;
+        }
+    }
+
+    /// <summary>
+    /// 任务获取
+    /// </summary>
+    public class JobGet : JobCommand, ICommand
+    {
+        public JobGet()
+        {
+            this.OperateFlag = JobOperation.GET;
+        }
+    }
+
+    /// <summary>
+    /// 任务执行
+    /// </summary>
+    public class JobExecute : JobCommand, ICommand
+    {
+        public JobExecute()
+        {
+            this.OperateFlag = JobOperation.Execute;
+        }
+    }
+
     /// <summary>
     /// 管理系统或抽取引擎自身发送任务处理命令
     /// </summary>
