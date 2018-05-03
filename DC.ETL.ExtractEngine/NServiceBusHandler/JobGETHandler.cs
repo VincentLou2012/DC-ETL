@@ -12,10 +12,10 @@ namespace DC.ETL.ExtractEngine.NServiceBus
     /// <summary>
     /// 任务获取消息队列处理
     /// </summary>
-    public class JobGETHandler :
-        IHandleMessages<JobGET>
+    public class JobGetHandler :
+        IHandleMessages<JobGet>
     {
-        public async Task Handle(JobGET message, IMessageHandlerContext context)
+        public async Task Handle(JobGet message, IMessageHandlerContext context)
         {
             switch (message.OperateFlag)
             {

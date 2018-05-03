@@ -12,10 +12,10 @@ namespace DC.ETL.ExtractEngine.NServiceBus
     /// <summary>
     /// 任务停止消息队列处理
     /// </summary>
-    public class JobSTOPHandler :
-        IHandleMessages<JobSTOP>
+    public class JobStopHandler :
+        IHandleMessages<JobStop>
     {
-        public async Task Handle(JobSTOP message, IMessageHandlerContext context)
+        public async Task Handle(JobStop message, IMessageHandlerContext context)
         {
             switch (message.OperateFlag)
             {

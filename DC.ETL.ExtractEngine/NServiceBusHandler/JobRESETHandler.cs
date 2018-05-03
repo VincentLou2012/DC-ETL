@@ -12,10 +12,10 @@ namespace DC.ETL.ExtractEngine.NServiceBus
     /// <summary>
     /// 任务重置消息队列处理
     /// </summary>
-    public class JobRESETHandler :
-        IHandleMessages<JobRESET>
+    public class JobResetHandler :
+        IHandleMessages<JobReset>
     {
-        public async Task Handle(JobRESET message, IMessageHandlerContext context)
+        public async Task Handle(JobReset message, IMessageHandlerContext context)
         {
             switch (message.OperateFlag)
             {

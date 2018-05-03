@@ -60,9 +60,9 @@
     <Compile Include="NServiceBusHandler\JobExecuteHandler.cs" />
     <Compile Include="NServiceBusHandler\JobFinishedHandler.cs" />
     <Compile Include="Listener.cs" />
-    <Compile Include="NServiceBusHandler\JobGETHandler.cs" />
-    <Compile Include="NServiceBusHandler\JobRESETHandler.cs" />
-    <Compile Include="NServiceBusHandler\JobSTOPHandler.cs" />
+    <Compile Include="NServiceBusHandler\JobGetHandler.cs" />
+    <Compile Include="NServiceBusHandler\JobResetHandler.cs" />
+    <Compile Include="NServiceBusHandler\JobStopHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
