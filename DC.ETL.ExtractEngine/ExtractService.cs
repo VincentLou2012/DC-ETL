@@ -8,7 +8,7 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using DC.ETL.Infrastructure.Container;
-using DC.ETL.Infrastructure.MQ.MSMQ;
+using DC.ETL.Infrastructure.MQ;
 namespace DC.ETL.ExtractEngine
 {
     public partial class ExtractService : ServiceBase

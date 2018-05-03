@@ -98,19 +98,20 @@
     <Compile Include="Container\ContainerRun.cs" />
     <Compile Include="Container\IContainer.cs" />
     <Compile Include="Container\UnityResolver.cs" />
+    <Compile Include="DataHandler\Clients\MSSQL\DataAccess.cs" />
     <Compile Include="DataHandler\IReader.cs" />
     <Compile Include="DataHandler\IWrite.cs" />
     <Compile Include="DataHandler\IWriter.cs" />
-    <Compile Include="DataHandler\Reader\Clients\MSSQL\MSSQLReader.cs" />
-    <Compile Include="DataHandler\Reader\Clients\SAP\RFC\RfcDestinationConfig.cs" />
-    <Compile Include="DataHandler\Reader\Clients\SAP\RFC\RfcManager.cs" />
-    <Compile Include="DataHandler\Reader\Clients\SAP\RFC\RfcParam.cs" />
+    <Compile Include="DataHandler\Clients\MSSQL\MSSQLReader.cs" />
+    <Compile Include="DataHandler\Clients\SAP\RFC\RfcDestinationConfig.cs" />
+    <Compile Include="DataHandler\Clients\SAP\RFC\RfcManager.cs" />
+    <Compile Include="DataHandler\Clients\SAP\RFC\RfcParam.cs" />
     <Compile Include="DisposableResource.cs" />
-    <Compile Include="MQ\MSMQ\EngineMQ.cs" />
-    <Compile Include="MQ\MSMQ\JobMQ.cs" />
-    <Compile Include="MQ\MSMQ\ManageMQ.cs" />
-    <Compile Include="MQ\MSMQ\Messages.cs" />
-    <Compile Include="MQ\MSMQ\MSMQ.cs" />
+    <Compile Include="MQ\MSMQBus\EngineMQ.cs" />
+    <Compile Include="MQ\MSMQBus\JobMQ.cs" />
+    <Compile Include="MQ\MSMQBus\ManageMQ.cs" />
+    <Compile Include="MQ\MSMQBus\Messages.cs" />
+    <Compile Include="MQ\MSMQBus\MSMQ.cs" />
     <Compile Include="MQ\NServiceBus\Messages.cs" />
     <Compile Include="MQ\NServiceBus\NServiceBusUtils.cs" />
     <Compile Include="PagedResult.cs" />
@@ -136,8 +137,8 @@
     <Content Include="Log\log2db.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DataHandler\Reader\Clients\MySQL\" />
-    <Folder Include="DataHandler\Reader\Clients\Oracle\" />
+    <Folder Include="DataHandler\Clients\MySQL\" />
+    <Folder Include="DataHandler\Clients\Oracle\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

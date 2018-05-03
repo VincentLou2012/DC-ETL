@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseModel\Addition.cs" />
     <Compile Include="BaseModel\AggregateRoot.cs" />
     <Compile Include="BaseModel\BusinessLib.cs" />
     <Compile Include="BaseModel\DataSource.cs" />
@@ -75,9 +76,11 @@
     <Compile Include="BaseModel\Schema.cs" />
     <Compile Include="BaseModel\Strategy.cs" />
     <Compile Include="BaseModel\Structure.cs" />
-    <Compile Include="BaseModel\Task.cs" />
+    <Compile Include="BaseModel\TaskItem.cs" />
+    <Compile Include="BaseModel\UnitBehavior.cs" />
     <Compile Include="DomainPO\Addition.cs" />
     <Compile Include="DomainPO\BusinessLib.cs" />
+    <Compile Include="DomainPO\BusinessLibRcd.cs" />
     <Compile Include="DomainPO\DataSource.cs" />
     <Compile Include="DomainPO\DataSourceRcd.cs" />
     <Compile Include="DomainPO\ExtractUnit.cs" />
@@ -85,31 +88,31 @@
     <Compile Include="DomainPO\ENums.cs" />
     <Compile Include="DomainPO\Schema.cs" />
     <Compile Include="DomainPO\Strategy.cs" />
+    <Compile Include="DomainPO\StrategyRcd.cs" />
     <Compile Include="DomainPO\Structure.cs" />
-    <Compile Include="DomainPO\Task.cs" />
+    <Compile Include="DomainPO\TaskItem.cs" />
     <Compile Include="DomainPO\TaskRcd.cs" />
     <Compile Include="DomainPO\UnitBehavior.cs" />
+    <Compile Include="Events\DataSourceChangeEvent.cs" />
+    <Compile Include="Events\DataSourceCreateEvent.cs" />
+    <Compile Include="Events\DomainEvent.cs" />
+    <Compile Include="Events\EventHandlers\DataSourceChangeEventHandler.cs" />
+    <Compile Include="Events\EventHandlers\DataSourceCreateEventHandler.cs" />
+    <Compile Include="Events\IDomainEvent.cs" />
+    <Compile Include="Events\IDomainEventHandler.cs" />
     <Compile Include="IAggregateRoot.cs" />
     <Compile Include="IEntity.cs" />
+    <Compile Include="IRepository\IBusinessLibRepository.cs" />
     <Compile Include="IRepository\IDataSourceRepository.cs" />
     <Compile Include="IRepository\IRepository.cs" />
-    <Compile Include="IRepository\ISchemaRepository.cs" />
     <Compile Include="IRepository\IStrategyRepository.cs" />
-    <Compile Include="IRepository\ITaskRepository.cs" />
+    <Compile Include="IRepository\ITaskItemRepository.cs" />
     <Compile Include="IRepository\IUnitOfWork.cs" />
     <Compile Include="IRepository\IUnitOfWorkRepositoryContext.cs" />
     <Compile Include="IRepository\SortOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\DataSourceDomainService.cs" />
-    <Compile Include="Service\ExtractUnitDomainService.cs" />
-    <Compile Include="Service\IDataSourceDomainService.cs" />
-    <Compile Include="Service\IExtractUnitDomainService.cs" />
-    <Compile Include="Service\ISchemaDomainService.cs" />
-    <Compile Include="Service\IStrategyDomainService.cs" />
-    <Compile Include="Service\ITaskDomainService.cs" />
-    <Compile Include="Service\SchemaDomainService.cs" />
-    <Compile Include="Service\StrategyDomainService.cs" />
-    <Compile Include="Service\TaskDomainService.cs" />
+    <Compile Include="Service\DomainService.cs" />
+    <Compile Include="Service\IDomainService.cs" />
     <Compile Include="Specifications\AnySpecification.cs" />
     <Compile Include="Specifications\ExpressionSpecification.cs" />
     <Compile Include="Specifications\ISpecification.cs" />
@@ -118,6 +121,10 @@
     <Compile Include="Specifications\Specification.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DC.ETL.Events\DC.ETL.Events.csproj">
+      <Project>{544b8b94-43e6-484f-b8c5-212f09750ee9}</Project>
+      <Name>DC.ETL.Events</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DC.ETL.Infrastructure\DC.ETL.Infrastructure.csproj">
       <Project>{b5859ff2-b448-4bfb-a52e-5c2ddf9798c5}</Project>
       <Name>DC.ETL.Infrastructure</Name>

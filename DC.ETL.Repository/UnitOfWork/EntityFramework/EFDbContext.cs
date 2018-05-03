@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using DC.ETL.Domain.Model;
+using DC.ETL.Domain;
 
 namespace DC.ETL.Repository.UnitOfWork
 {
@@ -22,6 +22,13 @@ namespace DC.ETL.Repository.UnitOfWork
         }
 
 
+        public DbSet<BusinessLib> BusinessLibs { get; set; }
+
+        public DbSet<Addition> Additions { get; set; }
+
+        public DbSet<UnitBehavior> UnitBehaviors { get; set; }
+
+        public DbSet<BusinessLibRcd> BusinessLibRcds { get; set; }
         /// <summary>
         /// 抽取单元
         /// </summary>
@@ -40,12 +47,12 @@ namespace DC.ETL.Repository.UnitOfWork
         /// <summary>
         /// 抽取数据结构
         /// </summary>
-        public DbSet<ExtractStructure> ExtractStructures { get; set; }
+        public DbSet<Structure> Structures { get; set; }
 
         /// <summary>
         /// 操作记录
         /// </summary>
-        public DbSet<OPRecord> OPRecords { get; set; }
+        public DbSet<StrategyRcd> StrategyRcds { get; set; }
 
         /// <summary>
         /// 数据模式
@@ -53,43 +60,19 @@ namespace DC.ETL.Repository.UnitOfWork
         public DbSet<Schema> Schemas { get; set; }
 
         /// <summary>
-        /// 数据模式记录
-        /// </summary>
-        public DbSet<SchemaRcd> SchemaRcds { get; set; }
-
-        /// <summary>
         /// 抽取策略
         /// </summary>
         public DbSet<Strategy> Strategys { get; set; }
 
         /// <summary>
-        /// 抽取策略记录
-        /// </summary>
-        public DbSet<StructureRcd> StructureRcds { get; set; }
-
-        /// <summary>
         /// 任务
         /// </summary>
-        public DbSet<DC.ETL.Domain.Model.Task> Tasks { get; set; }
+        public DbSet<TaskItem> Tasks { get; set; }
 
         /// <summary>
         /// 任务记录
         /// </summary>
         public DbSet<TaskRcd> TaskRcds { get; set; }
 
-        /// <summary>
-        /// 抽取单元记录
-        /// </summary>
-        public DbSet<UnitRcd> UnitRcds { get; set; }
-
-        /// <summary>
-        /// 全表数据结构
-        /// </summary>
-        public DbSet<WholeStructure> WholeStructures { get; set; }
-
-        /// <summary>
-        /// 全表数据结构记录
-        /// </summary>
-        public DbSet<WholeStructureRcd> WholeStructureRcds { get; set; }
     }
 }

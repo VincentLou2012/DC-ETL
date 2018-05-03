@@ -62,7 +62,7 @@ namespace DC.ETL.Repository.UnitOfWork
         #region IUnitOfWork接口实现
 
         public bool IsCommitted { get; set; }
-
+        public bool IsRollback { get; set; }
         public int Commit()
         {
             if (IsCommitted)
@@ -90,7 +90,7 @@ namespace DC.ETL.Repository.UnitOfWork
 
         public void Rollback()
         {
-            IsCommitted = false;
+            IsRollback = IsCommitted = true;
         }
         #endregion
 

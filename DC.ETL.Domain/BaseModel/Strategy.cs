@@ -42,7 +42,7 @@ namespace DC.ETL.Domain
         {
             if (stgDTO == null) return -1;// TODO: 替换标准错误代码
             Strategy stg = AutoMapperUtils.MapTo<Strategy>(stgDTO);
-            Strategy stgInDB = iStrategyRepository.GetByKey(stg.SN);
+            Strategy stgInDB = iStrategyRepository.GetByKey(stg.ID);
 
             if (stgInDB == null)
             {
@@ -63,7 +63,7 @@ namespace DC.ETL.Domain
         private void SetBaseInfo(Strategy o)
         {
             //this.StrategyID = o.StrategyID;// 	策略ID
-            this.SN = o.SN;// 	策略序列
+            this.ID = o.ID;// 	策略序列
             this.StrategyType = o.StrategyType;// 	策略类型,逻辑中枚举
             this.IsRepeet = o.IsRepeet;// 	是否重复
             this.RepeatCount = o.RepeatCount;// 	重复次数,0为无限,-1为不重复

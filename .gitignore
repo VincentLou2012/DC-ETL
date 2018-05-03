@@ -24,7 +24,7 @@ Thumbs.db
 [Dd]ebug*/
 [Rr]elease/
 obj/
-.vs/
+.vs/*
 [Tt]est[Rr]esult*
 *.vsp
 *.opensdf

@@ -65,14 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EFRepository\BusinessLibRepository.cs" />
     <Compile Include="EFRepository\EFRepository.cs" />
     <Compile Include="EFRepository\DataSourceRepository.cs" />
-    <Compile Include="EFRepository\ExtractUnitRepository.cs" />
-    <Compile Include="EFRepository\OPRecordRepository.cs" />
-    <Compile Include="EFRepository\SchemaRepository.cs" />
     <Compile Include="EFRepository\StrategyRepository.cs" />
-    <Compile Include="EFRepository\TaskRepository.cs" />
     <Compile Include="EFRepository\SortByExtension.cs" />
+    <Compile Include="EFRepository\TaskItemRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork\EntityFramework\EFDbContext.cs" />
     <Compile Include="UnitOfWork\EntityFramework\EFUnitOfWork.cs" />

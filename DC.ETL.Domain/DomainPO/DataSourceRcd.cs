@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace DC.ETL.Domain
 {
-    public partial class DataSourceRcd : OPRecord
+    public class DataSourceRcd : OPRecord
     {
-        public Guid DSSN{ get; set; }
+        //TODO EF映射配置数据源ID
+        public Guid DSID{ get; set; }
         public virtual DataSource _theDS { get; set; }
     }
 }

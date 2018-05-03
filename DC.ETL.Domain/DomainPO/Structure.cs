@@ -14,8 +14,8 @@ namespace DC.ETL.Domain
     {
         [Key]
         //序列标识
-        public System.Guid SN { get; set; }
-        //数据模式id
+        public System.Guid ID { get; set; }
+        //TODO EF映射配置数据模式id
         public Guid SchemaSN { get; set; }
         //字段名称
         public string FieldName { get; set; }

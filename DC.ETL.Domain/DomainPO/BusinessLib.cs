@@ -14,6 +14,6 @@ namespace DC.ETL.Domain
 
         public string Keywords { get; set; }
 
-        public virtual ICollection<Task> BUnits { get; set; }
+        public virtual ICollection<TaskItem> BUnits { get; set; }
     }
 }

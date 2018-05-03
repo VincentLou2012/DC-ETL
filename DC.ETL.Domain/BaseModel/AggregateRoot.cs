@@ -8,7 +8,7 @@ namespace DC.ETL.Domain
 {
     public abstract class AggregateRoot : IAggregateRoot
     {
-        public System.Guid SN
+        public System.Guid ID
         {
             get;
             set;
@@ -29,12 +29,12 @@ namespace DC.ETL.Domain
             IAggregateRoot ar = obj as IAggregateRoot;
             if (ar == null)
                 return false;
-            return this.SN == ar.SN;
+            return this.ID == ar.ID;
         }
 
         public override int GetHashCode()
         {
-            return this.SN.GetHashCode();
+            return this.ID.GetHashCode();
         }
 
         public virtual void Serialize()

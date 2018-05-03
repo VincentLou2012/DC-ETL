@@ -14,11 +14,11 @@ namespace DC.ETL.Domain
     {
         //主键ID
         [Key]
-        public Guid SN { get; set; }
-        //模式id
-        public Guid SchemaSN{ get; set; }
-        //任务id
-        public Guid TaskSN{ get; set; }
+        public Guid ID { get; set; }
+        //TODO EF映射配置模式id
+        public Guid SchemaID{ get; set; }
+        //TODO EF映射配置任务id
+        public Guid TaskID{ get; set; }
         //行数
         public Nullable<int> DataRows { get; set; }
         //目标名称
@@ -40,7 +40,7 @@ namespace DC.ETL.Domain
         //是否加载数据模式信息作为元数据
         public int EnabledSchemaMetadata { get; set; }
         //所属任务
-        public virtual Task _Task { get; set; }
+        public virtual TaskItem _Task { get; set; }
         //策略集合
         public virtual ICollection<Strategy> Strategies { get; set; }
         //抽取行为

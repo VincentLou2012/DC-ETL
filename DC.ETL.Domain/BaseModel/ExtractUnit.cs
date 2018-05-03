@@ -17,25 +17,6 @@ namespace DC.ETL.Domain
     /// </summary>
     public partial class ExtractUnit : IEntity
     {
-
-        #region 抽取单元
-        
-        private IExtractUnitRepository iExtractUnitRepository
-        {
-            get { return Container.Resolve<IExtractUnitRepository>("ExtractUnitRepository"); }
-        }
-        #endregion 抽取单元
-
-        /// <summary>
-        /// 获取单个抽取单元
-        /// </summary>
-        /// <returns></returns>
-        public ExtractUnitDTO Get(Guid SN)
-        {
-            return AutoMapperUtils.MapTo<ExtractUnitDTO>(iExtractUnitRepository.GetByKey(SN));
-        }
-
-
         /// <summary>
         /// 更新字段
         /// </summary>
@@ -43,9 +24,9 @@ namespace DC.ETL.Domain
         public void SetBaseInfo(ExtractUnitDTO o)
         {
             //this.UnintID = o.UnintID;// 主键ID
-            this.SN = o.SN;// 单元序列
-            this.SchemaSN = o.SchemaSN;// 模式id
-            this.TaskSN= o.TaskSN;// 任务id
+            this.ID = o.ID;// 单元序列
+            this.SchemaID = o.SchemaID;// 模式id
+            this.TaskID= o.TaskID;// 任务id
             this.DataRows = o.DataRows;// 行数
             this.TargetName = o.TargetName;// 目标名称
             this.MethodName = o.MethodName;// 定义方法名称

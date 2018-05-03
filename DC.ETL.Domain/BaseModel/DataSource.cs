@@ -15,17 +15,17 @@ namespace DC.ETL.Domain
     /// <summary>
     /// 数据源
     /// </summary>
-    public partial class DataSource : AggregateRoot
+    public partial class DataSource : AggregateRoot, IDisposable
     {
 
         #region 数据源
-        
-        private IDataSourceRepository iDataSourceRepository
+        private IDataSourceRepository DataSourceRepository
         {
             get { return Container.Resolve<IDataSourceRepository>("DataSourceRepository"); }
         }
         #endregion 数据源
 
+        #region Query
         /// <summary>
         /// 获取数据源分页列表
         /// 目前只编写了根据数据库名称进行模糊搜索逻辑
@@ -34,18 +34,72 @@ namespace DC.ETL.Domain
         public IEnumerable<DataSourceDTO> GetAll(string DSName, SortOrder sortOrder, int pageNumber, int pageSize)
         {
             Expression<Func<DataSource, bool>> ex = t => t.DSName.Contains(DSName);
-            return AutoMapperUtils.MapToList<DataSourceDTO>(iDataSourceRepository.GetAll(new ExpressionSpecification<DataSource>(ex),
-                d=>d.SN, sortOrder, pageNumber, pageSize));
+            return AutoMapperUtils.MapToList<DataSourceDTO>(DataSourceRepository.GetAll(new ExpressionSpecification<DataSource>(ex),
+                d => d.ID, sortOrder, pageNumber, pageSize));
         }
         /// <summary>
-        /// 获取单个数据源
+        /// 获取单个数据源dto
         /// </summary>
         /// <returns></returns>
-        public DataSourceDTO Get(Guid SN)
+        public DataSourceDTO GetDTO(Guid SN)
         {
-            return AutoMapperUtils.MapTo<DataSourceDTO>(iDataSourceRepository.GetByKey(SN));
+            return AutoMapperUtils.MapTo<DataSourceDTO>(this.Get(SN));
         }
-        
+
+        public DataSource Get(Guid ID)
+        {
+            return DataSourceRepository.GetByKey(ID);
+        }
+        #endregion
+
+        #region Command
+
+        public void Create(DataSourceDTO dto)
+        {
+            SetBaseInfo(dto);
+            this.DataSourceRepository.Add(this);
+        }
+
+        public void Update(DataSource entity)
+        {
+            SetBaseInfo(entity);
+            Update();
+        }
+
+        public void Update()
+        {
+            this.DataSourceRepository.Update(this);
+        }
+
+        public void Delete()
+        {
+            this.DataSourceRepository.Remove(this);
+        }
+
+        public void AddSchema(Schema schema)
+        {
+            this.Schemas.Add(schema);
+            Update();
+        }
+
+        public void ChangeSchema(Schema schema)
+        {
+            try
+            {
+                Schema theschema = this.Schemas.Where(p => p.ID == schema.ID).First();
+                //TODO theschema 中的字段值修改为schema的字段值
+                Update();
+            }
+            catch
+            { }
+        }
+
+        public void RemoveSchema(Schema schema)
+        {
+            this.Schemas.Remove(this.Schemas.Where(d => d.ID == schema.ID).First());
+            Update();
+        }
+
         /// <summary>
         /// 更新字段
         /// </summary>
@@ -68,7 +122,36 @@ namespace DC.ETL.Domain
             this.Keyword = o.Keyword;// 数据源关键词(预留)
             this.Aspect = o.Aspect;// 数据源方面(预留)
             this.Describe = o.Describe;// 数据源描述
+            this.Schemas = o.Schemas;
+            this.Records = o.Records;
         }
 
+        public void SetBaseInfo(DataSourceDTO o)
+        {
+            //this.DSID = ds.DSID;// 数据源主键
+            this.DSName = o.DSName;// 数据源名称
+            this.DSType = o.DSType;// 数据源类型
+            this.Address = o.Address;// 源地址
+            this.InstanceName = o.InstanceName;// 实例名
+            this.Port = o.Port;// 端口
+            this.SystemNum = o.SystemNum;// 系统号
+            this.ClientNum = o.ClientNum;// 客户端号
+            this.SysLanguage = o.SysLanguage;// 系统语言
+            this.ConnectionParams = o.ConnectionParams;// 连接参数
+            this.UserName = o.UserName;// 账户用户名
+            this.RoleType = o.RoleType;// 是否是输出目标数据源
+            this.UserPassword = o.UserPassword;// 账户密码
+            this.Keyword = o.Keyword;// 数据源关键词(预留)
+            this.Aspect = o.Aspect;// 数据源方面(预留)
+            this.Describe = o.Describe;// 数据源描述
+            this.Schemas = AutoMapperUtils.MapToList<Schema>(o.Schemas);
+            //this.Records = AutoMapperUtils.MapToList<DataSourceRcd>(o.Records);
+        }
+        #endregion
+
+        public void Dispose()
+        {
+
+        }
     }
 }

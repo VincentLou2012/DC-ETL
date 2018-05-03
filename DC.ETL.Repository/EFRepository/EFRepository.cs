@@ -123,7 +123,7 @@ namespace DC.ETL.Repository.EFRepository
 
         public TAggregateRoot GetByKey(Guid key)
         {
-            return _efContext.EFContext.Set<TAggregateRoot>().First(a => a.SN == key);
+            return _efContext.EFContext.Set<TAggregateRoot>().First(a => a.ID == key);
         }
 
         public TAggregateRoot GetBySpecification(ISpecification<TAggregateRoot> spec)

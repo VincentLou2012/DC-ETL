@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Messaging;
-using DC.ETL.Infrastructure.MQ.MSMQ;
+using DC.ETL.Infrastructure.MQ;
 namespace DC.ETL.ExtractEngine
 {
     public class Listener

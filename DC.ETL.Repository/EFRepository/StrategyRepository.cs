@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DC.ETL.Domain.Model;
+using DC.ETL.Domain;
 using DC.ETL.Domain;
 using DC.ETL.Domain.Specifications;
 using System.Linq.Expressions;
@@ -22,7 +22,7 @@ namespace DC.ETL.Repository.EFRepository
         /// <returns></returns>
         public IEnumerable<Strategy> GetAll(ICollection<Guid> SNStrategies)
         {
-            Expression<Func<Strategy, bool>> ex = t => SNStrategies.Contains(t.SN);
+            Expression<Func<Strategy, bool>> ex = t => SNStrategies.Contains(t.ID);
             return GetAll(new ExpressionSpecification<Strategy>(ex));
         }
     }
