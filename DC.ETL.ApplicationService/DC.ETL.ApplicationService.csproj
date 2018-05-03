@@ -83,6 +83,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DC.ETL.Infrastructure\DC.ETL.Infrastructure.csproj">
+      <Project>{b5859ff2-b448-4bfb-a52e-5c2ddf9798c5}</Project>
+      <Name>DC.ETL.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DC.ETL.Models.DTO\DC.ETL.Models.DTO.csproj">
       <Project>{1b4f7645-5e54-44a5-acc0-2ca3e40aea27}</Project>
       <Name>DC.ETL.Models.DTO</Name>

@@ -12,6 +12,6 @@ namespace DC.ETL.Domain
     public interface IEntity
     {
         //实体唯一标识序列
-        System.Guid SN { get; }
+        System.Guid ID { get; }
     }
 }

@@ -95,13 +95,14 @@
     <Compile Include="Container\ContainerRun.cs" />
     <Compile Include="Container\IContainer.cs" />
     <Compile Include="Container\UnityResolver.cs" />
+    <Compile Include="DataHandler\Clients\MSSQL\DataAccess.cs" />
     <Compile Include="DataHandler\IReader.cs" />
     <Compile Include="DataHandler\IWrite.cs" />
     <Compile Include="DataHandler\IWriter.cs" />
-    <Compile Include="DataHandler\Reader\Clients\MSSQL\MSSQLReader.cs" />
-    <Compile Include="DataHandler\Reader\Clients\SAP\RFC\RfcDestinationConfig.cs" />
-    <Compile Include="DataHandler\Reader\Clients\SAP\RFC\RfcManager.cs" />
-    <Compile Include="DataHandler\Reader\Clients\SAP\RFC\RfcParam.cs" />
+    <Compile Include="DataHandler\Clients\MSSQL\MSSQLReader.cs" />
+    <Compile Include="DataHandler\Clients\SAP\RFC\RfcDestinationConfig.cs" />
+    <Compile Include="DataHandler\Clients\SAP\RFC\RfcManager.cs" />
+    <Compile Include="DataHandler\Clients\SAP\RFC\RfcParam.cs" />
     <Compile Include="DisposableResource.cs" />
     <Compile Include="MSMQ\EngineMQ.cs" />
     <Compile Include="MSMQ\JobMQ.cs" />
@@ -131,8 +132,8 @@
     <Content Include="Log\log2db.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DataHandler\Reader\Clients\MySQL\" />
-    <Folder Include="DataHandler\Reader\Clients\Oracle\" />
+    <Folder Include="DataHandler\Clients\MySQL\" />
+    <Folder Include="DataHandler\Clients\Oracle\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

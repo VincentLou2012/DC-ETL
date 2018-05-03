@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace DC.ETL.Domain
 {
-    public partial class TaskRcd : OPRecord
+    public class TaskRcd : OPRecord
     {
-        public int TaskID { get; set; }
-        public virtual Task _theTask { get; set; }
+        //TODO EF映射配置任务ID
+        public Guid TaskID { get; set; }
+        public virtual TaskItem _theTask { get; set; }
     }
 }

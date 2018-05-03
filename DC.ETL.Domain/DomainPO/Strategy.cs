@@ -12,8 +12,6 @@ namespace DC.ETL.Domain
     /// </summary>
     public partial class Strategy
     {
-        [Key]
-        public int StrategyID { get; set; }
         //策略类型,逻辑中枚举
         public Nullable<int> StrategyType { get; set; }
         //是否重复

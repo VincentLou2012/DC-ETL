@@ -13,11 +13,13 @@ namespace DC.ETL.Domain
     public partial class Schema
     {
         [Key]
-        public Guid SN{ get; set; }
-        //数据源id
-        public int DSID { get; set; }
+        public Guid ID{ get; set; }
+        //TODO EF映射数据源SN
+        public Guid DSID { get; set; }
         //模式名
         public string SchemaName { get; set; }
+        //显示名
+        public string DisplayName { get; set; }
         //方面,主题标识
         public string Aspect { get; set; }
         //关键词
@@ -27,7 +29,7 @@ namespace DC.ETL.Domain
         //所属数据源
         public virtual DataSource Source { get; set; }
         //抽取表结构
-        public virtual ICollection<Structure> EStructure { get; set; }
+        public virtual ICollection<Structure> Fields { get; set; }
         //对应抽取单元集合，原则上一个结构对应一个抽取单元
         public virtual ICollection<ExtractUnit> Units { get; set; }
     }

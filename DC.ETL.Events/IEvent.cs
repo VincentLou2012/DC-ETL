@@ -10,6 +10,6 @@ namespace DC.ETL.Events
     {
         Guid ID { get; }
 
-        DateTime Timestamp { get;  }
+        DateTime TimeStamp { get;  }
     }
 }
