@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using DC.ETL.Domain.Specifications;
 using System.Linq.Expressions;
-using DC.ETL.Domain.Model;
 using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
 using DC.ETL.Infrastructure.Utils;
@@ -31,20 +30,13 @@ namespace DC.ETL.Domain.Service
         }
         #endregion 数据模式
 
-        #region 操作记录
-        
-        private IOPRecordRepository iOPRecordRepository
-        {
-            get { return Container.Resolve<IOPRecordRepository>("OPRecordRepository"); }
-        }
-        #endregion 操作记录
         /// <summary>
         /// 从业务平台获取指定数据源所有Schema模式 并存储获取的模式
         /// </summary>
         /// <returns>Schema模式集合</returns>
-        public IEnumerable<SchemaDTO> GetSchema(Guid SN)
+        public IEnumerable<SchemaDTO> GetSchemas(Guid DSSN)
         {
-            DataSource ds = iDataSourceRepository.GetByKey(SN);
+            DataSource ds = iDataSourceRepository.GetByKey(DSSN);
             // 从数据源读取模式
             ICollection<Schema> schema = ConnectDB(ds);
             if (schema == null)
@@ -77,11 +69,6 @@ namespace DC.ETL.Domain.Service
             }
             int nRet = iDataSourceRepository.SaveChanges();
 
-            // 新增操作记录
-            DataSourceRcd dsRcd = new DataSourceRcd(nRet, euInDB, eop);
-            iOPRecordRepository.Add(dsRcd);
-            int nOpRet = iOPRecordRepository.SaveChanges();
-            return nRet;
         }
 
         // TODO: 数据源验证

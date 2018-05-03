@@ -10,12 +10,12 @@ using System.Linq.Expressions;
 using DC.ETL.Infrastructure.Utils;
 using DC.ETL.Models.DTO;
 
-namespace DC.ETL.Domain.Model
+namespace DC.ETL.Domain
 {
     /// <summary>
     /// 数据模式
     /// </summary>
-    public partial class Schema : AggregateRoot
+    public partial class Schema : IEntity
     {
         #region 数据模式
         

@@ -28,5 +28,6 @@ obj/
 [Tt]est[Rr]esult*
 *.vsp
 *.opensdf
-
+#Ignore files build by kdiff
+*.orig
 #Ignore files build by this project[ETL]

@@ -6,7 +6,7 @@ using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
 using DC.ETL.Domain.Specifications;
 using System.Linq.Expressions;
-using DC.ETL.Domain.Model;
+
 using DC.ETL.Infrastructure.Utils;
 using DC.ETL.Models.DTO;
 

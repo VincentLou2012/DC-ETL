@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DC.ETL.Domain.Specifications;
 using System.Linq.Expressions;
-using DC.ETL.Domain.Model;
+using DC.ETL.Domain;
 using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
 using DC.ETL.Infrastructure.Utils;

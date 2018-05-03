@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DC.ETL.Domain.Specifications;
 using System.Linq.Expressions;
-using DC.ETL.Domain.Model;
+
 using Microsoft.Practices.Unity;
 using DC.ETL.Infrastructure.Container;
 using DC.ETL.Infrastructure.Utils;
@@ -74,7 +74,7 @@ namespace DC.ETL.Domain.Service
         public int SaveExtractStructure(ExtractStructureDTO exDTO)
         {
             if (exDTO == null) return -1;// TODO: 替换标准错误代码
-            ExtractStructure extractStructure = AutoMapperUtils.MapTo<ExtractStructure>(exDTO);
+            Structure extractStructure = AutoMapperUtils.MapTo<Structure>(exDTO);
             iSchemaRepository.UpdateExtractStructure(extractStructure);
             EOptype eop = EOptype.Update;
 

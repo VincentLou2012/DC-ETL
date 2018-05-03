@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DC.ETL.Domain.Model
+namespace DC.ETL.Domain
 {
     /// <summary>
     /// 操作记录

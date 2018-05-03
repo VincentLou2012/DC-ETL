@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DC.ETL.Domain.Model
+namespace DC.ETL.Domain
 {
     public abstract class AggregateRoot : IAggregateRoot
     {
@@ -35,6 +35,11 @@ namespace DC.ETL.Domain.Model
         public override int GetHashCode()
         {
             return this.SN.GetHashCode();
+        }
+
+        public virtual void Serialize()
+        {
+
         }
     }
 }
