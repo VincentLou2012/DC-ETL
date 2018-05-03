@@ -17,31 +17,9 @@ namespace DC.ETL.ExtractEngine.NServiceBus
     {
         public async Task Handle(JobExecute message, IMessageHandlerContext context)
         {
-            switch (message.OperateFlag)
-            {
-                case JobOperation.ADD:// 增加新任务
-                    // TaskDTO task = Task.Get(message.TaskSN);
-                    // ExecuteJobs(task.Units); // 对每个抽取单元执行任务到quartz
-                    break;
-                case JobOperation.Execute:// 执行任务 从quartz发送消息开始执行指定任务
+            // 执行任务 从quartz发送消息开始执行指定任务
                     // TaskDTO task = Task.Get(message.TaskSN);
                     // ExcuteJobs(task.Units); // 对每个抽取单元执行任务到quartz
-                    break;
-                case JobOperation.GET:// 获取任务状态等数据??
-                    // TaskDTO task = Task.Get(message.TaskSN);
-                    // 发送消息返回任务数据
-                    break;
-                case JobOperation.RESET:// 重置任务状态
-                    // TaskDTO task = Task.Get(message.TaskSN);
-                    // ResetJobs(task.Units); // 对每个抽取单元quartz任务重置状态
-                    break;
-                case JobOperation.STOP:// 停止任务执行
-                    // TaskDTO task = Task.Get(message.TaskSN);
-                    // StopJobs(task.Units); // 对每个抽取单元quartz任务重置状态
-                    break;
-                default:
-                    break;
-            }
 
         }
     }
